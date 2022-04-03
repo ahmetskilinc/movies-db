@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-const Hero = lazy(() => import("../components/Hero"));
+const HomeHero = lazy(() => import("../components/HomeHero"));
 const MoviesList = lazy(() => import("../components/MoviesList"));
 
 const Home = () => {
@@ -12,25 +12,25 @@ const Home = () => {
 	const [heroMovies, setHeroMovies] = useState([]);
 
 	const fetchPopularMovies = async () => {
-		const response = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=6b40bff7fc9e4ef1a2d27fe2e3894564&language=en-US&page=1");
+		const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
 		const data = await response.json();
 		return data;
 	};
 
 	const fetchPopularTvShows = async () => {
-		const response = await fetch("https://api.themoviedb.org/3/tv/popular?api_key=6b40bff7fc9e4ef1a2d27fe2e3894564&language=en-US&page=1");
+		const response = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
 		const data = await response.json();
 		return data;
 	};
 
 	const fetchTopRatedMovies = async () => {
-		const response = await fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=6b40bff7fc9e4ef1a2d27fe2e3894564&language=en-US&page=1");
+		const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
 		const data = await response.json();
 		return data;
 	};
 
 	const fetchTopRatedTvShows = async () => {
-		const response = await fetch("https://api.themoviedb.org/3/tv/top_rated?api_key=6b40bff7fc9e4ef1a2d27fe2e3894564&language=en-US&page=1");
+		const response = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
 		const data = await response.json();
 		return data;
 	};
@@ -60,7 +60,7 @@ const Home = () => {
 
 	return (
 		<Suspense fallback={<LoadingSpinner />}>
-			<Hero movies={heroMovies} />
+			<HomeHero movies={heroMovies} />
 			<MoviesList movies={popularMovies} listTitle="Popular movies this week" />
 			<MoviesList movies={popularTvShows} listTitle="Popular TV shows this week" />
 			<MoviesList movies={topRatedMovies} listTitle="Top rated movies" />

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { isMobile } from "react-device-detect";
 import { Link } from "react-router-dom";
 
-const Hero = ({ movies }) => {
+const HomeHero = ({ movies }) => {
 	const [showMoreOverview, setShowMoreOverview] = useState(false);
 
 	return (
@@ -85,4 +85,4 @@ const Hero = ({ movies }) => {
 	);
 };
 
-export default Hero;
+export default HomeHero;
