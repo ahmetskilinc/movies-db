@@ -29,7 +29,6 @@ const Movie = () => {
 	};
 
 	useEffect(() => {
-		console.log("useEffect");
 		fetchMovie(params.id).then((data) => {
 			setMovie(data);
 		});
@@ -41,7 +40,7 @@ const Movie = () => {
 		});
 	}, [params]);
 
-	return movie !== null ? (
+	return movie !== null && credits !== null && externalIds !== null ? (
 		<div
 			className="w-full py-8 relative after:content-[''] after:bg-slate-500 after:w-full after:h-full after:bg-opacity-60 after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-[1] bg-cover bg-center"
 			style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` }}
@@ -61,7 +60,12 @@ const Movie = () => {
 						{format(parseISO(movie.release_date), "MMMM dd, yyyy")}
 					</p>
 					<p className="py-3 text-white">{movie.overview}</p>
-					<div></div>
+					<div className="flex gap-2">
+						{externalIds.imdb_id ? <a href={"https://www.imdb.com/title/" + externalIds.imdb_id}>IMDb</a> : null}
+						{externalIds.facebook_id ? <a href={"https://www.facebook.com/" + externalIds.facebook_id}>Facebook</a> : null}
+						{externalIds.twitter_id ? <a href={"https://www.twitter.com/" + externalIds.twitter_id}>Twitter</a> : null}
+						{externalIds.instagram_id ? <a href={"https://www.instagram.com/" + externalIds.instagram_id}>Instagram</a> : null}
+					</div>
 				</div>
 			</div>
 		</div>
