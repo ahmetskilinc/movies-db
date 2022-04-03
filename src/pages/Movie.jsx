@@ -8,7 +8,6 @@ const Movie = () => {
 	const [movie, setMovie] = useState(null);
 	const [credits, setCredits] = useState(null);
 	const [externalIds, setExternalIds] = useState(null);
-	const [loading, setLoading] = useState(true);
 
 	const fetchMovie = async (id) => {
 		const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`);
@@ -45,14 +44,14 @@ const Movie = () => {
 			className="w-full py-8 relative after:content-[''] after:bg-slate-500 after:w-full after:h-full after:bg-opacity-60 after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-[1] bg-cover bg-center"
 			style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` }}
 		>
-			<div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:w-cs relative z-10 px-6 lg:p-0 ">
+			<div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:max-w-cs relative z-10 px-6 lg:p-0 ">
 				<img
 					loading="lazy"
 					src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
 					alt={movie.title}
 					className="w-44 lg:w-72 rounded-xl shadow-2xl lg:mr-6 "
 				/>
-				<div>
+				<div className="w-full">
 					<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.title}</h1>
 					<p className="text-gray-300 pt-2">
 						{movie.genres.map((genre, index) => `${genre.name}${index === movie.genres.length - 1 ? "" : ", "}`)}

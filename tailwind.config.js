@@ -6,6 +6,9 @@ module.exports = {
 				cs: "1280px",
 				full_width_margin: "100vh - 16px",
 			},
+			maxWidth: {
+				cs: "1280px",
+			},
 		},
 	},
 	plugins: [require("daisyui"), require("tw-elements/dist/plugin")],

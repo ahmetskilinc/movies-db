@@ -7,7 +7,7 @@ const HomeHero = ({ movies }) => {
 
 	return (
 		<div id="MoviesHeroCarousel" className="carousel slide relative" data-bs-ride="carousel">
-			<div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4 z-20">
+			<div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-1 lg:mb-4 z-20">
 				<button
 					type="button"
 					data-bs-target="#MoviesHeroCarousel"
@@ -28,7 +28,7 @@ const HomeHero = ({ movies }) => {
 						} w-full py-8 relative after:content-[''] after:bg-slate-500 after:w-full after:h-full after:bg-opacity-60 after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-[1] bg-cover bg-center`}
 						style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` }}
 					>
-						<div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:w-cs relative z-10 px-6 lg:p-0 ">
+						<div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:max-w-cs  relative z-10 px-6 lg:p-0 ">
 							<img
 								loading="lazy"
 								src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
@@ -64,7 +64,7 @@ const HomeHero = ({ movies }) => {
 				))}
 			</div>
 			<button
-				className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0 z-20"
+				className="carousel-control-prev absolute top-0 bottom-0 w-5 lg:w-8 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0 z-20"
 				type="button"
 				data-bs-target="#MoviesHeroCarousel"
 				data-bs-slide="prev"
@@ -73,7 +73,7 @@ const HomeHero = ({ movies }) => {
 				<span className="visually-hidden">Previous</span>
 			</button>
 			<button
-				className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0 z-20"
+				className="carousel-control-next absolute top-0 bottom-0 w-5 lg:w-8 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0 z-20"
 				type="button"
 				data-bs-target="#MoviesHeroCarousel"
 				data-bs-slide="next"
