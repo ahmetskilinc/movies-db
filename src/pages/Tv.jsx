@@ -29,7 +29,6 @@ const Tv = () => {
 	};
 
 	useEffect(() => {
-		console.log("useEffect");
 		fetchMovie(params.id).then((data) => {
 			setMovie(data);
 		});
@@ -58,7 +57,7 @@ const Tv = () => {
 					<p className="py-3 text-white">{movie.overview}</p>
 					<div>
 						<p className="text-white">
-							<span className="font-bold">Release Date:</span> {format(parseISO(movie.release_date), "MMMM dd, yyyy")}
+							<span className="font-bold">First Air Date:</span> {format(parseISO(movie.first_air_date), "MMMM dd, yyyy")}
 						</p>
 					</div>
 				</div>
