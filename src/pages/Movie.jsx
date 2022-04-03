@@ -15,11 +15,11 @@ const Movie = () => {
 		return data;
 	};
 
-	const fetchCredits = async (id) => {
-		const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`);
-		const data = await response.json();
-		return data;
-	};
+	// const fetchCredits = async (id) => {
+	// 	const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`);
+	// 	const data = await response.json();
+	// 	return data;
+	// };
 
 	const fetchExternalIds = async (id) => {
 		const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/external_ids?api_key=${process.env.REACT_APP_TMDB_KEY}`);
@@ -31,15 +31,15 @@ const Movie = () => {
 		fetchMovie(params.id).then((data) => {
 			setMovie(data);
 		});
-		fetchCredits(params.id).then((data) => {
-			setCredits(data);
-		});
+		// fetchCredits(params.id).then((data) => {
+		// 	setCredits(data);
+		// });
 		fetchExternalIds(params.id).then((data) => {
 			setExternalIds(data);
 		});
 	}, [params]);
 
-	return movie !== null && credits !== null && externalIds !== null ? (
+	return movie !== null && externalIds !== null ? (
 		<div
 			className="w-full py-8 relative after:content-[''] after:bg-slate-500 after:w-full after:h-full after:bg-opacity-60 after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-[1] bg-cover bg-center"
 			style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` }}
@@ -51,19 +51,38 @@ const Movie = () => {
 					alt={movie.title}
 					className="w-44 lg:w-72 rounded-xl shadow-2xl lg:mr-6 "
 				/>
-				<div className="w-full">
-					<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.title}</h1>
-					<p className="text-gray-300 pt-2">
-						{movie.genres.map((genre, index) => `${genre.name}${index === movie.genres.length - 1 ? "" : ", "}`)}
-						{" - "}
-						{format(parseISO(movie.release_date), "MMMM dd, yyyy")}
-					</p>
-					<p className="py-3 text-white">{movie.overview}</p>
-					<div className="flex gap-2">
-						{externalIds.imdb_id ? <a href={"https://www.imdb.com/title/" + externalIds.imdb_id}>IMDb</a> : null}
-						{externalIds.facebook_id ? <a href={"https://www.facebook.com/" + externalIds.facebook_id}>Facebook</a> : null}
-						{externalIds.twitter_id ? <a href={"https://www.twitter.com/" + externalIds.twitter_id}>Twitter</a> : null}
-						{externalIds.instagram_id ? <a href={"https://www.instagram.com/" + externalIds.instagram_id}>Instagram</a> : null}
+				<div className="w-full space-y-3">
+					<div>
+						<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.title}</h1>
+						<p className="text-gray-300">
+							{movie.genres.map((genre, index) => `${genre.name}${index === movie.genres.length - 1 ? "" : ", "}`)}
+							{" - "}
+							{format(parseISO(movie.release_date), "MMMM dd, yyyy")}
+						</p>
+					</div>
+					<p className="text-white italic">{movie.tagline}</p>
+					<p className="text-white">{movie.overview}</p>
+					<div className="flex gap-2 underline">
+						{externalIds.imdb_id ? (
+							<a href={"https://www.imdb.com/title/" + externalIds.imdb_id} className="text-gray-300 hover:text-gray-200">
+								IMDb
+							</a>
+						) : null}
+						{externalIds.facebook_id ? (
+							<a href={"https://www.facebook.com/" + externalIds.facebook_id} className="text-gray-300 hover:text-gray-200">
+								Facebook
+							</a>
+						) : null}
+						{externalIds.twitter_id ? (
+							<a href={"https://www.twitter.com/" + externalIds.twitter_id} className="text-gray-300 hover:text-gray-200">
+								Twitter
+							</a>
+						) : null}
+						{externalIds.instagram_id ? (
+							<a href={"https://www.instagram.com/" + externalIds.instagram_id} className="text-gray-300 hover:text-gray-200">
+								Instagram
+							</a>
+						) : null}
 					</div>
 				</div>
 			</div>

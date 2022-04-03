@@ -15,11 +15,11 @@ const Tv = () => {
 		return data;
 	};
 
-	const fetchCredits = async (id) => {
-		const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`);
-		const data = await response.json();
-		return data;
-	};
+	// const fetchCredits = async (id) => {
+	// 	const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`);
+	// 	const data = await response.json();
+	// 	return data;
+	// };
 
 	const fetchExternalIds = async (id) => {
 		const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/external_ids?api_key=${process.env.REACT_APP_TMDB_KEY}`);
@@ -31,15 +31,15 @@ const Tv = () => {
 		fetchMovie(params.id).then((data) => {
 			setMovie(data);
 		});
-		fetchCredits(params.id).then((data) => {
-			setCredits(data);
-		});
+		// fetchCredits(params.id).then((data) => {
+		// 	setCredits(data);
+		// });
 		fetchExternalIds(params.id).then((data) => {
 			setExternalIds(data);
 		});
 	}, [params]);
 
-	return movie !== null && credits !== null && externalIds !== null ? (
+	return movie !== null && externalIds !== null ? (
 		<div
 			className="w-full py-8 relative after:content-[''] after:bg-slate-500 after:w-full after:h-full after:bg-opacity-60 after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-[1] bg-cover bg-center"
 			style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` }}
