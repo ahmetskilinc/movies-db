@@ -61,10 +61,10 @@ const Home = () => {
 	return (
 		<Suspense fallback={<LoadingSpinner />}>
 			<HomeHero movies={heroMovies} />
-			<MoviesList movies={popularMovies} listTitle="Popular movies this week" />
-			<MoviesList movies={popularTvShows} listTitle="Popular TV shows this week" />
-			<MoviesList movies={topRatedMovies} listTitle="Top rated movies" />
-			<MoviesList movies={topRatedTvShows} listTitle="Top rated TV shows" />
+			<MoviesList movies={popularMovies} listTitle="Popular movies this week" type="movie" />
+			<MoviesList movies={popularTvShows} listTitle="Popular TV shows this week" type="tv" />
+			<MoviesList movies={topRatedMovies} listTitle="Top rated movies" type="movie" />
+			<MoviesList movies={topRatedTvShows} listTitle="Top rated TV shows" type="tv" />
 		</Suspense>
 	);
 };
