@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
-import { MovieCard, Hero } from "./";
+import { useEffect, useState, lazy, Suspense } from "react";
+import LoadingSpinner from "./LoadingSpinner";
+
+const MovieCard = lazy(() => import("./MovieCard"));
+const Hero = lazy(() => import("./Hero"));
 
 const MoviesList = () => {
 	const [movies, setMovies] = useState([]);
@@ -22,20 +25,22 @@ const MoviesList = () => {
 	}, []);
 
 	return (
-		<main>
-			{movies.length > 0 ? (
-				<>
-					<Hero movies={heroMovies} />
-					<div className="lg:w-cs my-0 mx-auto">
-						<div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 my-6 mx-4 lg:mx-0">
-							{movies.map((movie) => (
-								<MovieCard key={movie.id} movie={movie} />
-							))}
+		<Suspense fallback={<LoadingSpinner />}>
+			<main>
+				{movies.length > 0 ? (
+					<>
+						<Hero movies={heroMovies} />
+						<div className="lg:w-cs my-0 mx-auto">
+							<div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 my-6 mx-4 lg:mx-0">
+								{movies.map((movie) => (
+									<MovieCard key={movie.id} movie={movie} />
+								))}
+							</div>
 						</div>
-					</div>
-				</>
-			) : null}
-		</main>
+					</>
+				) : null}
+			</main>
+		</Suspense>
 	);
 };
 
