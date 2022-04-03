@@ -30,6 +30,7 @@ const Hero = ({ movies }) => {
 						<div className="hero-content flex flex-col lg:flex-row justify-center items-center mx-auto lg:w-cs relative z-10 p-0">
 							<img
 								src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
+								alt={movie.title}
 								className="w-48 lg:w-72 rounded-lg shadow-2xl lg:mr-6 "
 							/>
 							<div>
