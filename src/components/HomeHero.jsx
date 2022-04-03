@@ -53,7 +53,7 @@ const HomeHero = ({ movies }) => {
 									) : null}
 								</p>
 								<Link
-									to={`/${movie.id}`}
+									to={`/movie/${movie.id}`}
 									className="bg-accent hover:bg-accent-focus text-white font-bold py-2 px-4 rounded-full transition-all"
 								>
 									Show Me
