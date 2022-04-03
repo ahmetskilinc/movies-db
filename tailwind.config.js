@@ -3,7 +3,8 @@ module.exports = {
 	theme: {
 		extend: {
 			width: {
-				cs: "1080px",
+				cs: "1280px",
+				full_width_margin: "100vh - 16px",
 			},
 		},
 	},

@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Nav() {
 	const [showNav, setShowNav] = useState(false);
 
 	return (
-		<nav className="bg-accent p-6">
+		<nav className="bg-accent p-4 fixed w-screen z-50 top-0">
 			<div className="flex items-center justify-between flex-wrap lg:w-cs my-0 mx-auto">
 				<div className="flex items-center flex-shrink-0 text-white mr-6">
 					<svg className="h-full w-7 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.28 91.8">
@@ -29,15 +30,15 @@ function Nav() {
 				</div>
 				<div className={`w-full flex-grow lg:flex lg:items-center lg:w-auto ${showNav ? "block" : "hidden"}`}>
 					<div className="text-sm lg:flex-grow">
-						<a href="/" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+						<Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
 							Home
-						</a>
-						<a href="/movies" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+						</Link>
+						<Link to="/movies" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
 							Movies
-						</a>
-						<a href="/tv-shows" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+						</Link>
+						<Link to="/tv-shows" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
 							TV Shows
-						</a>
+						</Link>
 					</div>
 					{/* <div className="relative mx-auto text-gray-600">
 						<input
@@ -66,12 +67,12 @@ function Nav() {
 						</button>
 					</div> */}
 					{/* <div>
-					<a
+					<Link
 						href="#"
 						className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
 					>
 						Download
-					</a>
+					</Link>
 				</div> */}
 				</div>
 			</div>
