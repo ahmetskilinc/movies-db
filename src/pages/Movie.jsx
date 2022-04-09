@@ -14,7 +14,6 @@ const Movie = () => {
 	const fetchMovie = async (id) => {
 		const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`);
 		const data = await response.json();
-		console.log(data);
 		return data;
 	};
 
@@ -42,7 +41,7 @@ const Movie = () => {
 		});
 	}, [params]);
 
-	return movie !== null && externalIds !== null ? (
+	return movie !== null && externalIds !== null && credits !== null ? (
 		<Suspense fallback={<LoadingSpinner />}>
 			<Hero movie={movie} externalIds={externalIds} type="movie" />
 			<Cast credits={credits} />

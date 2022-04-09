@@ -6,6 +6,7 @@ const Nav = lazy(() => import("./components/Nav"));
 const Home = lazy(() => import("./pages/Home"));
 const Movie = lazy(() => import("./pages/Movie"));
 const Tv = lazy(() => import("./pages/Tv"));
+const Person = lazy(() => import("./pages/Person"));
 
 function App() {
 	return (
@@ -17,6 +18,7 @@ function App() {
 				<Route path="/tv/:id" element={<Tv />} />
 				<Route path="/movies" element={<p>Movies</p>} />
 				<Route path="/tv-shows" element={<p>TV Shows</p>} />
+				<Route path="/person/:id" element={<Person />} />
 			</Routes>
 		</Suspense>
 	);
