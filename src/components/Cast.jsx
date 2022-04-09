@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 
 function Cast({ credits }) {
 	return (
-		<div className="w-full py-8">
-			<div className="flex items-start mx-auto gap-4 lg:w-cs z-10 px-6 lg:p-0 overflow-scroll">
+		<div className="w-full my-2 md:my-4 mx-auto lg:w-cs">
+			<h1 className="text-white text-bold text-2xl mb-3">Cast</h1>
+			<div className="flex overflow-x-scroll overflow-y-visible gap-4 rounded-xl">
 				{credits.cast.map((character, index) => (
 					<Link to={`/person/${character.id}`} className="w-32 lg:w-44 flex-shrink-0" key={index}>
 						<img
