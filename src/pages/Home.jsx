@@ -37,24 +37,26 @@ const Home = () => {
 
 	useEffect(() => {
 		fetchPopularMovies().then((data) => {
-			setHeroMovies([
-				data.results[Math.floor(Math.random() * (20 - 0) + 0)],
-				data.results[Math.floor(Math.random() * (20 - 0) + 0)],
-				data.results[Math.floor(Math.random() * (20 - 0) + 0)],
-			]);
 			setPopularMovies(data.results);
+			setHeroMovies((oldArray) => [...oldArray, { obj: data.results[Math.floor(Math.random() * (20 - 0) + 0)], type: "movie", title: "Popular Movie" }]);
 		});
 
 		fetchPopularTvShows().then((data) => {
 			setPopularTvShows(data.results);
+			setHeroMovies((oldArray) => [...oldArray, { obj: data.results[Math.floor(Math.random() * (20 - 0) + 0)], type: "tv", title: "Popular TV Show" }]);
 		});
 
 		fetchTopRatedMovies().then((data) => {
 			setTopRatedMovies(data.results);
+			setHeroMovies((oldArray) => [
+				...oldArray,
+				{ obj: data.results[Math.floor(Math.random() * (20 - 0) + 0)], type: "movie", title: "Top Rated Movie" },
+			]);
 		});
 
 		fetchTopRatedTvShows().then((data) => {
 			setTopRatedTvShows(data.results);
+			setHeroMovies((oldArray) => [...oldArray, { obj: data.results[Math.floor(Math.random() * (20 - 0) + 0)], type: "tv", title: "Top Rated TV Show" }]);
 		});
 	}, []);
 

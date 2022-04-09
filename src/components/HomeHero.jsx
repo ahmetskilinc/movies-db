@@ -8,16 +8,17 @@ const HomeHero = ({ movies }) => {
 	return (
 		<div id="MoviesHeroCarousel" className="carousel slide relative" data-bs-ride="carousel">
 			<div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-1 lg:mb-4 z-20">
-				<button
-					type="button"
-					data-bs-target="#MoviesHeroCarousel"
-					data-bs-slide-to="0"
-					className="active"
-					aria-current="true"
-					aria-label="Slide 1"
-				></button>
-				<button type="button" data-bs-target="#MoviesHeroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-				<button type="button" data-bs-target="#MoviesHeroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+				{movies.map((movie, index) => (
+					<button
+						key={index}
+						type="button"
+						data-bs-target="#MoviesHeroCarousel"
+						data-bs-slide-to={index}
+						className={index === 0 ? "active" : ""}
+						aria-current={index === 0 ? "true" : "false"}
+						aria-label={`Slide ${index + 1}`}
+					></button>
+				))}
 			</div>
 			<div className="carousel-inner relative w-full overflow-hidden">
 				{movies.map((movie, index) => (
@@ -26,23 +27,23 @@ const HomeHero = ({ movies }) => {
 						className={`carousel-item float-left${
 							index === 0 ? " active" : ""
 						} w-full py-8 relative after:content-[''] after:bg-slate-500 after:w-full after:h-full after:bg-opacity-60 after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-[1] bg-cover bg-center`}
-						style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` }}
+						style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.obj.backdrop_path})` }}
 					>
 						<div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:max-w-cs  relative z-10 px-6 lg:p-0 ">
 							<img
 								loading="lazy"
-								src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-								alt={movie.title}
+								src={`https://image.tmdb.org/t/p/w342${movie.obj.poster_path}`}
+								alt={movie.type === "movie" ? movie.obj.title : movie.obj.name}
 								className="w-44 lg:w-72 rounded-xl shadow-2xl lg:mr-6 "
 							/>
 							<div>
-								<h2 className="text-sm font-bold text-gray-400">Popular this week!</h2>
-								<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.title}</h1>
+								<h2 className="text-sm font-bold text-gray-400">{movie.title}</h2>
+								<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.type === "movie" ? movie.obj.title : movie.obj.name}</h1>
 								<p className="py-3 text-white">
 									{isMobile && !showMoreOverview
-										? `${movie.overview.split(" ").splice(0, 32).join(" ")}${movie.overview.split(" ").length > 32 ? "..." : ""}`
-										: movie.overview}{" "}
-									{isMobile && movie.overview.split(" ").length > 32 ? (
+										? `${movie.obj.overview.split(" ").splice(0, 32).join(" ")}${movie.obj.overview.split(" ").length > 32 ? "..." : ""}`
+										: movie.obj.overview}{" "}
+									{isMobile && movie.obj.overview.split(" ").length > 32 ? (
 										<button
 											className="text-white underline background-transparent outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
 											type="button"
@@ -53,7 +54,7 @@ const HomeHero = ({ movies }) => {
 									) : null}
 								</p>
 								<Link
-									to={`/movie/${movie.id}`}
+									to={`${movie.type === "tv" ? "tv" : "movie"}/${movie.obj.id}`}
 									className="bg-accent hover:bg-accent-focus text-white font-bold py-2 px-4 rounded-full transition-all"
 								>
 									Show Me

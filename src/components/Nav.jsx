@@ -33,12 +33,12 @@ function Nav() {
 						<Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
 							Home
 						</Link>
-						<Link to="/movies" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+						{/* <Link to="/movies" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
 							Movies
 						</Link>
 						<Link to="/tv-shows" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
 							TV Shows
-						</Link>
+						</Link> */}
 					</div>
 					{/* <div className="relative mx-auto text-gray-600">
 						<input
