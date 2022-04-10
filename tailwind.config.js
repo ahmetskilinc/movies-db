@@ -9,6 +9,12 @@ module.exports = {
 			maxWidth: {
 				cs: "1280px",
 			},
+			margin: {
+				cs: "16px",
+			},
+			padding: {
+				cs: "16px",
+			},
 		},
 	},
 	plugins: [require("daisyui"), require("tw-elements/dist/plugin")],

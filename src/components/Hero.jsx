@@ -6,7 +6,7 @@ function Hero({ movie, externalIds, type }) {
 			className="w-full py-8 relative after:content-[''] after:bg-slate-500 after:w-full after:h-full after:bg-opacity-60 after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-[1] bg-cover bg-center"
 			style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})` }}
 		>
-			<div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:w-cs relative z-10 px-6 lg:p-0 ">
+			<div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:max-w-cs relative z-10 px-6 lg:px-cs">
 				<img
 					loading="lazy"
 					src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}

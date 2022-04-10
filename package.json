@@ -3,15 +3,14 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"daisyui": "^2.13.6",
-		"date-fns": "^2.28.0",
-		"react": "^18.0.0",
-		"react-device-detect": "^2.1.2",
-		"react-dom": "^18.0.0",
-		"react-lazy-load-image-component": "^1.5.3",
+		"daisyui": "2.13.6",
+		"date-fns": "2.28.0",
+		"react": "18.0.0",
+		"react-device-detect": "2.2.2",
+		"react-dom": "18.0.0",
 		"react-router-dom": "6",
 		"react-scripts": "5.0.0",
-		"tw-elements": "^1.0.0-alpha12"
+		"tw-elements": "1.0.0-alpha12"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -35,8 +34,8 @@
 		]
 	},
 	"devDependencies": {
-		"autoprefixer": "^10.4.4",
-		"postcss": "^8.4.12",
-		"tailwindcss": "^3.0.23"
+		"autoprefixer": "10.4.4",
+		"postcss": "8.4.12",
+		"tailwindcss": "3.0.23"
 	}
 }

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 
@@ -42,10 +42,10 @@ const Movie = () => {
 	}, [params]);
 
 	return movie !== null && externalIds !== null && credits !== null ? (
-		<Suspense fallback={<LoadingSpinner />}>
+		<>
 			<Hero movie={movie} externalIds={externalIds} type="movie" />
 			<Cast credits={credits} />
-		</Suspense>
+		</>
 	) : (
 		<LoadingSpinner />
 	);

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Cast({ credits }) {
 	return (
-		<div className="w-full my-2 md:my-4 mx-auto lg:w-cs">
+		<div className="w-full my-2 md:my-4 mx-auto lg:max-w-cs px-cs">
 			<h1 className="text-white text-bold text-2xl mb-3">Cast</h1>
 			<div className="flex overflow-x-scroll overflow-y-visible gap-4 rounded-xl">
 				{credits.cast.map((character, index) => (

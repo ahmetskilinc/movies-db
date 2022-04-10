@@ -1,5 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
-import LoadingSpinner from "../components/LoadingSpinner";
+import { lazy, useEffect, useState } from "react";
 
 const HomeHero = lazy(() => import("../components/HomeHero"));
 const MoviesList = lazy(() => import("../components/MoviesList"));
@@ -61,13 +60,13 @@ const Home = () => {
 	}, []);
 
 	return (
-		<Suspense fallback={<LoadingSpinner />}>
+		<>
 			<HomeHero movies={heroMovies} />
 			<MoviesList movies={popularMovies} listTitle="Popular movies this week" type="movie" />
 			<MoviesList movies={popularTvShows} listTitle="Popular TV shows this week" type="tv" />
 			<MoviesList movies={topRatedMovies} listTitle="Top rated movies" type="movie" />
 			<MoviesList movies={topRatedTvShows} listTitle="Top rated TV shows" type="tv" />
-		</Suspense>
+		</>
 	);
 };
 
