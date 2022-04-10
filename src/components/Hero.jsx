@@ -1,6 +1,6 @@
 import { parseISO, format } from "date-fns";
 
-function Hero({ movie, externalIds, type }) {
+const Hero = ({ movie, externalIds, type }) => {
 	return (
 		<div
 			className="w-full py-8 relative after:content-[''] after:bg-slate-500 after:w-full after:h-full after:bg-opacity-60 after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-[1] bg-cover bg-center"
@@ -41,6 +41,6 @@ function Hero({ movie, externalIds, type }) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Hero;

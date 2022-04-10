@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Nav() {
+const Nav = () => {
 	const [showNav, setShowNav] = useState(false);
 
 	return (
@@ -78,6 +78,6 @@ function Nav() {
 			</div>
 		</nav>
 	);
-}
+};
 
 export default Nav;

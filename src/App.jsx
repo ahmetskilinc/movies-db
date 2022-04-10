@@ -3,12 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 const Nav = lazy(() => import("./components/Nav"));
+const Footer = lazy(() => import("./components/Footer"));
 const Home = lazy(() => import("./pages/Home"));
 const Movie = lazy(() => import("./pages/Movie"));
 const Tv = lazy(() => import("./pages/Tv"));
 const Person = lazy(() => import("./pages/Person"));
 
-function App() {
+const App = () => {
 	return (
 		<Suspense fallback={<LoadingSpinner />}>
 			<Nav />
@@ -20,8 +21,9 @@ function App() {
 				<Route path="/tv-shows" element={<p>TV Shows</p>} />
 				<Route path="/person/:id" element={<Person />} />
 			</Routes>
+			<Footer />
 		</Suspense>
 	);
-}
+};
 
 export default App;
