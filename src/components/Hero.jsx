@@ -32,10 +32,26 @@ const Hero = ({ movie, externalIds, type }) => {
 					</p>
 					<p className="py-3 text-white">{movie.overview}</p>
 					<div className="flex gap-2">
-						{externalIds.imdb_id !== null ? <a href={"https://www.imdb.com/title/" + externalIds.imdb_id}>IMDb</a> : null}
-						{externalIds.facebook_id !== null ? <a href={"https://www.facebook.com/" + externalIds.facebook_id}>Facebook</a> : null}
-						{externalIds.twitter_id !== null ? <a href={"https://www.twitter.com/" + externalIds.twitter_id}>Twitter</a> : null}
-						{externalIds.instagram_id !== null ? <a href={"https://www.instagram.com/" + externalIds.instagram_id}>Instagram</a> : null}
+						{externalIds.imdb_id !== null ? (
+							<a href={"https://www.imdb.com/title/" + externalIds.imdb_id} className="hover:underline">
+								IMDb
+							</a>
+						) : null}
+						{externalIds.facebook_id !== null ? (
+							<a href={"https://www.facebook.com/" + externalIds.facebook_id} className="hover:underline">
+								Facebook
+							</a>
+						) : null}
+						{externalIds.twitter_id !== null ? (
+							<a href={"https://www.twitter.com/" + externalIds.twitter_id} className="hover:underline">
+								Twitter
+							</a>
+						) : null}
+						{externalIds.instagram_id !== null ? (
+							<a href={"https://www.instagram.com/" + externalIds.instagram_id} className="hover:underline">
+								Instagram
+							</a>
+						) : null}
 					</div>
 				</div>
 			</div>
