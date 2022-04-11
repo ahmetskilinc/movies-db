@@ -1,3 +1,4 @@
+import { isMobile } from "react-device-detect";
 import { Link } from "react-router-dom";
 
 const Cast = ({ credits }) => {
@@ -11,6 +12,8 @@ const Cast = ({ credits }) => {
 							loading="lazy"
 							src={character.profile_path ? `https://image.tmdb.org/t/p/w185${character.profile_path}` : "/images/placeholder.jpeg"}
 							alt={character.name}
+							width={isMobile ? "96pxpx" : "144px"}
+							height={isMobile ? "144px" : "208px"}
 							className="w-24 lg:w-36 h-36 lg:h-52 object-cover rounded-xl shadow-2xl lg:mr-6"
 						/>
 						<div className="text-xs lg:text-sm pt-1 space-y-1">

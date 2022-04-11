@@ -1,4 +1,5 @@
 import { parseISO, format } from "date-fns";
+import { isMobile } from "react-device-detect";
 
 const Hero = ({ movie, externalIds, type }) => {
 	return (
@@ -11,7 +12,9 @@ const Hero = ({ movie, externalIds, type }) => {
 					loading="lazy"
 					src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
 					alt={type === "movie" ? movie.title : movie.name}
-					className="w-44 lg:w-72 rounded-xl shadow-2xl lg:mr-6 "
+					width={isMobile ? "176px" : "288px"}
+					height={isMobile ? "256px" : "384px"}
+					className="w-44 lg:w-72 h-64 lg:h-96 rounded-xl shadow-2xl lg:mr-6"
 				/>
 				<div>
 					<h1 className="text-xl lg:text-5xl font-bold text-white">{type === "movie" ? movie.title : movie.name}</h1>

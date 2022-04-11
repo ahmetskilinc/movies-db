@@ -34,7 +34,9 @@ const HomeHero = ({ movies }) => {
 								loading="lazy"
 								src={`https://image.tmdb.org/t/p/w342${movie.obj.poster_path}`}
 								alt={movie.type === "movie" ? movie.obj.title : movie.obj.name}
-								className="w-44 lg:w-72 rounded-xl shadow-2xl lg:mr-6 "
+								width={isMobile ? "176px" : "288px"}
+								height={isMobile ? "256px" : "384px"}
+								className="w-44 lg:w-72 h-64 lg:h-96 rounded-xl shadow-2xl lg:mr-6"
 							/>
 							<div>
 								<h2 className="text-sm font-bold text-gray-400">{movie.title}</h2>
