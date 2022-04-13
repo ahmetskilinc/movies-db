@@ -14,7 +14,8 @@ const HomeHero = ({ movies }) => {
 						type="button"
 						data-bs-target="#MoviesHeroCarousel"
 						data-bs-slide-to={index}
-						className={index === 0 ? "active" : ""}
+						className={`${index === 0 ? "active" : ""}`}
+						style={{ height: isMobile ? "5px" : "3px" }}
 						aria-current={index === 0 ? "true" : "false"}
 						aria-label={`Slide ${index + 1}`}
 					></button>
