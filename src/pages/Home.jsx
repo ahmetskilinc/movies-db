@@ -63,8 +63,11 @@ const Home = () => {
 		<>
 			<HomeHero movies={heroMovies} />
 			<MoviesList movies={popularMovies} listTitle="Popular movies this week" type="movie" />
+			<div className="divider"></div>
 			<MoviesList movies={popularTvShows} listTitle="Popular TV shows this week" type="tv" />
+			<div className="divider"></div>
 			<MoviesList movies={topRatedMovies} listTitle="Top rated movies" type="movie" />
+			<div className="divider"></div>
 			<MoviesList movies={topRatedTvShows} listTitle="Top rated TV shows" type="tv" />
 		</>
 	);
