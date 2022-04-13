@@ -1,7 +1,7 @@
 import { lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import LoadingSpinner from "../components/LoadingSpinner";
 
+const LoadingSpinner = lazy(() => import("../components/LoadingSpinner"));
 const Hero = lazy(() => import("../components/Hero"));
 const Cast = lazy(() => import("../components/Cast"));
 

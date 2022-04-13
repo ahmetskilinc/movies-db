@@ -1,6 +1,6 @@
 import { lazy } from "react";
-import LoadingSpinner from "./LoadingSpinner";
 
+const LoadingSpinner = lazy(() => import("../components/LoadingSpinner"));
 const MovieCard = lazy(() => import("./MovieCard"));
 
 const MoviesList = ({ movies, listTitle, type }) => {
