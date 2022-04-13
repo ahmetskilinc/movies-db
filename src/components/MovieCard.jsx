@@ -9,7 +9,7 @@ const MovieCard = ({ movie, type }) => {
 			<img
 				loading="lazy"
 				src={poster_path ? `https://image.tmdb.org/t/p/w185${poster_path}` : "/images/placeholder.jpeg"}
-				alt={movie.title}
+				alt={type === "tv" ? movie.name : movie.title}
 				width={isMobile ? "96px" : "192px"}
 				height={isMobile ? "144px" : "288px"}
 				className="w-24 lg:w-48 h-36 lg:h-72 object-cover rounded-xl shadow-2xl"
