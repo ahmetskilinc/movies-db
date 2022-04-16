@@ -17,7 +17,7 @@ const Reviews = (props: { reviews: Reviews.RootObject }) => {
 						{avatar_pics.map((review) => (
 							<div className="avatar" key={review.id}>
 								<div className="w-10">
-									<img src={`https://image.tmdb.org/t/p/w150_and_h150_face/${review.author_details.avatar_path}`} />
+									<img src={`https://image.tmdb.org/t/p/w150_and_h150_face/${review.author_details.avatar_path}`} alt={review.author} />
 								</div>
 							</div>
 						))}
