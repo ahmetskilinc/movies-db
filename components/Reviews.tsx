@@ -25,7 +25,7 @@ const Reviews = (props: { reviews: Reviews.RootObject }) => {
 				</div>
 				<div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
 					<div className="flex flex-col">
-						{results.map((review) => (
+						{/* {results.map((review) => (
 							<div className="flex flex-col" key={review.id}>
 								<div className="flex items-center">
 									<div className="avatar">
@@ -43,7 +43,7 @@ const Reviews = (props: { reviews: Reviews.RootObject }) => {
 									</div>
 								</div>
 							</div>
-						))}
+						))} */}
 					</div>
 				</div>
 			</div>
