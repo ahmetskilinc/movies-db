@@ -6,12 +6,14 @@ import type { Movie } from "../../models/movie";
 import type { Movies } from "../../models/movie_popular";
 import type { ExternalIds } from "../../models/external_ids";
 import MoviesList from "../../components/MoviesList";
+import { Reviews } from "../../models/reviews";
 
 // dynamic components
 const LoadingSpinner = dynamic(() => import("../../components/LoadingSpinner"));
 const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
 const RevenueBudgetView = dynamic(() => import("../../components/RevBudgetView"));
+const Reviews = dynamic(() => import("../../components/Reviews"));
 
 const defaultEndpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
 
@@ -20,10 +22,11 @@ interface MoviePageProps {
 	movieCredits: Credits.RootObject;
 	movieRecommendations: Movies.RootObject;
 	movieExternalIds: ExternalIds.RootObject;
+	movieReviews: Reviews.RootObject;
 }
 
 const Movie = (props: MoviePageProps) => {
-	const { movie, movieCredits, movieExternalIds, movieRecommendations } = props;
+	const { movie, movieCredits, movieExternalIds, movieRecommendations, movieReviews } = props;
 
 	return movie !== null && movieExternalIds !== null && movieCredits !== null && movieRecommendations !== null ? (
 		<>
@@ -33,6 +36,7 @@ const Movie = (props: MoviePageProps) => {
 			<Hero movie={movie} externalIds={movieExternalIds} type="movie" />
 			<Cast credits={movieCredits} />
 			<RevenueBudgetView budget={movie.budget} revenue={movie.revenue} />
+			<Reviews reviews={movieReviews} />
 			<MoviesList listTitle="Similar Movies" movies={movieRecommendations.results} type="movie" compact={true} />
 		</>
 	) : (
@@ -56,12 +60,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const movieExternalIds = await fetch(`${defaultEndpoint}movie/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieExternalIdsData = await movieExternalIds.json();
 
+	const movieReviews = await fetch(`${defaultEndpoint}movie/${id}/reviews?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movieReviewsData = await movieReviews.json();
+
 	return {
 		props: {
 			movie: movieData,
 			movieCredits: movieCreditsData,
 			movieRecommendations: movieRecommendationsData,
 			movieExternalIds: movieExternalIdsData,
+			movieReviews: movieReviewsData,
 		},
 	};
 };

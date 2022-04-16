@@ -63,7 +63,10 @@ const Hero = (props: HeroProps) => {
 							{instagram_id !== null ? <ExternalLinkHero link={"https://www.instagram.com/" + instagram_id} title="Instagram" /> : null}
 							{homepage !== null ? <ExternalLinkHero link={homepage} title="Homepage" /> : null}
 						</div>
-						<div className="radial-progress bg-primary text-primary-content border-4 border-primary">{vote_average * 10}%</div>
+						<div className="flex items-center space-x-1 pt-3">
+							<div className="radial-progress bg-primary text-primary-content border-4 border-primary">{vote_average * 10}%</div>
+							<p>Rating</p>
+						</div>
 					</div>
 				</div>
 			</div>
