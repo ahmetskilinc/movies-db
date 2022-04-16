@@ -7,6 +7,7 @@ import type { TvPopular } from "../models/tv_popular";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import LoadingSpinner from "../components/LoadingSpinner";
+
 // dynamic components
 const MoviesList = dynamic(() => import("../components/MoviesList"));
 const HomeHero = dynamic(() => import("../components/HomeHero"));

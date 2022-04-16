@@ -50,10 +50,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const movieCredits = await fetch(`${defaultEndpoint}movie/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieCreditsData = await movieCredits.json();
 
-	const movieRecommendations = await fetch(`${defaultEndpoint}3/movie/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movieRecommendations = await fetch(`${defaultEndpoint}movie/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieRecommendationsData = await movieRecommendations.json();
 
-	const movieExternalIds = await fetch(`${defaultEndpoint}3/movie/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movieExternalIds = await fetch(`${defaultEndpoint}movie/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieExternalIdsData = await movieExternalIds.json();
 
 	return {
