@@ -10,6 +10,8 @@ const LoadingSpinner = dynamic(() => import("../../components/LoadingSpinner"));
 const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
 
+const defaultEndpoint = process.env.NEXT_PUBLIC_DDEFAULT_ENDPOINT;
+
 interface TvPageProps {
 	movie: Tv.RootObject;
 	movieCredits: Credits.RootObject;
@@ -36,13 +38,13 @@ export default Tv;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { id } = context.query;
-	const movie = await fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movie = await fetch(`${defaultEndpoint}tv/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieData = await movie.json();
 
-	const movieCredits = await fetch(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movieCredits = await fetch(`${defaultEndpoint}3/tv/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieCreditsData = await movieCredits.json();
 
-	const movieExternalIds = await fetch(`https://api.themoviedb.org/3/tv/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movieExternalIds = await fetch(`${defaultEndpoint}3/tv/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieExternalIdsData = await movieExternalIds.json();
 
 	return {

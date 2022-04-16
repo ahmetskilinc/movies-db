@@ -11,7 +11,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 const MoviesList = dynamic(() => import("../components/MoviesList"));
 const HomeHero = dynamic(() => import("../components/HomeHero"));
 
-const defaultEndpoint = "https://api.themoviedb.org/3/";
+const defaultEndpoint = process.env.NEXT_PUBLIC_DDEFAULT_ENDPOINT;
 
 interface HomeProps {
 	homeHero: HomeHeroType.RootObject[];
