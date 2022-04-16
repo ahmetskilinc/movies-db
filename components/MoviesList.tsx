@@ -9,12 +9,13 @@ interface MovieListProps {
 	movies: Movies.Result[] | TvPopular.Result[];
 	listTitle: string;
 	type: string;
+	compact: boolean;
 }
 
 const MoviesList = (props: MovieListProps) => {
-	const { movies, listTitle, type } = props;
+	const { movies, listTitle, type, compact } = props;
 	return (
-		<article>
+		<article className={`${compact ? `w-full my-2 md:my-4 mx-auto lg:max-w-cs px-cs` : ""}`}>
 			{movies.length > 0 ? (
 				<div className="lg:w-full_width_margin m-2 md:m-4">
 					<h1 className="text-white text-bold text-2xl mb-3">{listTitle}</h1>

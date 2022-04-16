@@ -31,7 +31,7 @@ const Movie = (props: MoviePageProps) => {
 			<Hero movie={movie} externalIds={movieExternalIds} type="movie" />
 			<Cast credits={movieCredits} />
 			<RevenueBudgetView budget={movie.budget} revenue={movie.revenue} />
-			<MoviesList listTitle="Similar Movies" movies={movieRecommendations.results} type="movie" />
+			<MoviesList listTitle="Similar Movies" movies={movieRecommendations.results} type="movie" compact={true} />
 		</>
 	) : (
 		<LoadingSpinner />

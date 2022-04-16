@@ -34,13 +34,13 @@ const Home = (props: HomeProps) => {
 				{homeHero !== null && moviesPopular !== null && tvPopular !== null ? (
 					<>
 						<HomeHero movies={homeHero} />
-						<MoviesList movies={moviesPopular} listTitle="Popular movies this week" type="movie" />
+						<MoviesList movies={moviesPopular} listTitle="Popular movies this week" type="movie" compact={false} />
 						<div className="divider"></div>
-						<MoviesList movies={tvPopular} listTitle="Popular TV shows this week" type="tv" />
+						<MoviesList movies={tvPopular} listTitle="Popular TV shows this week" type="tv" compact={false} />
 						{/* <div className="divider"></div>
-						<MoviesList movies={topRatedMovies} listTitle="Top rated movies" type="movie" />
+						<MoviesList movies={topRatedMovies} listTitle="Top rated movies" type="movie" compact={false} />
 						<div className="divider"></div>
-						<MoviesList movies={topRatedTvShows} listTitle="Top rated TV shows" type="tv" /> */}
+						<MoviesList movies={topRatedTvShows} listTitle="Top rated TV shows" type="tv" compact={false} /> */}
 					</>
 				) : (
 					<LoadingSpinner />
