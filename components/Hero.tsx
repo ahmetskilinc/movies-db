@@ -24,7 +24,7 @@ const Hero = (props: HeroProps) => {
 					alt={type === "movie" ? movie.title : movie.name}
 					width={isMobile ? "176px" : "288px"}
 					height={isMobile ? "256px" : "384px"}
-					className="w-44 lg:w-72 h-64 lg:h-96 rounded-xl shadow-2xl lg:mr-6"
+					className="w-44 lg:w-72 h-64 lg:h-96 rounded-xl shadow-2xl lg:mr-6 mb-2 lg:mb-0"
 				/>
 				<div>
 					<h1 className="text-xl lg:text-5xl font-bold text-white">{type === "movie" ? movie.title : movie.name}</h1>

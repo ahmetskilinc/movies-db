@@ -20,8 +20,7 @@ const HomeHero = (props: HomeHeroProps) => {
 						type="button"
 						data-bs-target="#MoviesHeroCarousel"
 						data-bs-slide-to={index}
-						className={`${index === 0 ? "active" : ""}`}
-						style={{ height: isMobile ? "5px" : "3px" }}
+						className={`${index === 0 ? "active" : ""} h-[5px] lg:h-[3px]`}
 						aria-current={index === 0 ? "true" : "false"}
 						aria-label={`Slide ${index + 1}`}
 					></button>
@@ -43,7 +42,7 @@ const HomeHero = (props: HomeHeroProps) => {
 								alt={movie.type === "movie" ? movie.obj.title : movie.obj.name}
 								width={isMobile ? "176px" : "288px"}
 								height={isMobile ? "256px" : "384px"}
-								className="w-44 lg:w-72 h-64 lg:h-96 object-cover rounded-xl shadow-2xl lg:mr-6"
+								className="w-44 lg:w-72 h-64 lg:h-96 object-cover rounded-xl shadow-2xl lg:mr-6 mb-2 lg:mb-0"
 							/>
 							<div>
 								<h2 className="text-sm font-bold text-gray-400">{movie.title}</h2>
@@ -62,7 +61,7 @@ const HomeHero = (props: HomeHeroProps) => {
 										</button>
 									) : null}
 								</p>
-								<Link href={`${movie.type === "tv" ? "tv" : "movie"}/${movie.obj.id}`}>
+								<Link href={`${movie.type === "tv" ? "/tv" : "/movie"}/${movie.obj.id}`}>
 									<a className="bg-accent hover:bg-accent-focus text-white font-bold py-2 px-4 rounded-full transition-all">Show Me</a>
 								</Link>
 							</div>
