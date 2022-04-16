@@ -13,7 +13,7 @@ const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
 const RevenueBudgetView = dynamic(() => import("../../components/RevBudgetView"));
 
-const defaultEndpoint = process.env.NEXT_PUBLIC_DDEFAULT_ENDPOINT;
+const defaultEndpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
 
 interface MoviePageProps {
 	movie: Movie.RootObject;

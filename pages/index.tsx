@@ -11,7 +11,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 const MoviesList = dynamic(() => import("../components/MoviesList"));
 const HomeHero = dynamic(() => import("../components/HomeHero"));
 
-const defaultEndpoint = process.env.NEXT_PUBLIC_DDEFAULT_ENDPOINT;
+const defaultEndpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
 
 interface HomeProps {
 	homeHero: HomeHeroType.RootObject[];

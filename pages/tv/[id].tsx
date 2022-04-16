@@ -10,7 +10,7 @@ const LoadingSpinner = dynamic(() => import("../../components/LoadingSpinner"));
 const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
 
-const defaultEndpoint = process.env.NEXT_PUBLIC_DDEFAULT_ENDPOINT;
+const defaultEndpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
 
 interface TvPageProps {
 	movie: Tv.RootObject;
