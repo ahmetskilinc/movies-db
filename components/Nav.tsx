@@ -31,7 +31,7 @@ const Nav = () => {
 				<div className={`w-full flex-grow lg:flex lg:items-center lg:w-auto ${showNav ? "block" : "hidden"}`}>
 					<div className="text-sm lg:flex-grow">
 						<Link href="/">
-							<a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Home</a>
+							<a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200 mr-4">Home</a>
 						</Link>
 						{/* <Link to="/movies" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
 							Movies
