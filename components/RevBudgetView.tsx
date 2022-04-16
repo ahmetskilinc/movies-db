@@ -1,10 +1,11 @@
 import CurrencyFormat from "react-currency-format";
+import { isMobile } from "react-device-detect";
 
 const RevenueBudgetView = (props: { budget: number; revenue: number }) => {
 	const { budget, revenue } = props;
 	return (
 		<div className="w-full my-2 md:my-4 mx-auto lg:max-w-cs px-cs">
-			<div className="stats bg-primary text-primary-content">
+			<div className={`stats ${isMobile ? "stats-vertical " : ""}bg-primary text-primary-content`}>
 				<div className="stat">
 					<div className="stat-title">Budget</div>
 					<div className="stat-value">

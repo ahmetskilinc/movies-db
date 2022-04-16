@@ -56,7 +56,7 @@ const Hero = (props: HeroProps) => {
 								: "N/A"}
 						</p>
 						<p className="py-3 text-white">{overview}</p>
-						<div className="flex gap-2 items-center">
+						<div className="flex gap-2 items-center flex-wrap">
 							{imdb_id !== null ? <ExternalLinkHero link={"https://www.imdb.com/title/" + imdb_id} title="IMDb" /> : null}
 							{facebook_id !== null ? <ExternalLinkHero link={"https://www.facebook.com/" + facebook_id} title="Facebook" /> : null}
 							{twitter_id !== null ? <ExternalLinkHero link={"https://www.twitter.com/" + twitter_id} title="Twitter" /> : null}
