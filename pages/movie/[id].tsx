@@ -13,6 +13,8 @@ const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
 const RevenueBudgetView = dynamic(() => import("../../components/RevBudgetView"));
 
+const defaultEndpoint = process.env.NEXT_PUBLIC_DDEFAULT_ENDPOINT;
+
 interface MoviePageProps {
 	movie: Movie.RootObject;
 	movieCredits: Credits.RootObject;
@@ -42,16 +44,16 @@ export default Movie;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { id } = context.query;
-	const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movie = await fetch(`${defaultEndpoint}movie/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieData = await movie.json();
 
-	const movieCredits = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movieCredits = await fetch(`${defaultEndpoint}movie/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieCreditsData = await movieCredits.json();
 
-	const movieRecommendations = await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movieRecommendations = await fetch(`${defaultEndpoint}3/movie/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieRecommendationsData = await movieRecommendations.json();
 
-	const movieExternalIds = await fetch(`https://api.themoviedb.org/3/movie/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movieExternalIds = await fetch(`${defaultEndpoint}3/movie/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieExternalIdsData = await movieExternalIds.json();
 
 	return {
