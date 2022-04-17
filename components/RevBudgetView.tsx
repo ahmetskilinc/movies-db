@@ -1,5 +1,4 @@
 import CurrencyFormat from "react-currency-format";
-import { isMobile } from "react-device-detect";
 
 const RevenueBudgetView = (props: { budget: number; revenue: number }) => {
 	const { budget, revenue } = props;
