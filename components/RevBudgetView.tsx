@@ -5,7 +5,7 @@ const RevenueBudgetView = (props: { budget: number; revenue: number }) => {
 	const { budget, revenue } = props;
 	return (
 		<div className="w-full my-2 md:my-4 mx-auto lg:max-w-cs px-cs">
-			<div className={`stats ${isMobile ? "stats-vertical w-full " : ""}bg-primary text-primary-content rounded-md`}>
+			<div className={`stats bg-primary text-primary-content rounded-md flex flex-wrap lg:inline-grid`}>
 				<div className="stat">
 					<div className="stat-title">Budget</div>
 					<div className="stat-value">
