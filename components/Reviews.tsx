@@ -65,7 +65,9 @@ const Reviews = (props: { reviews: Reviews.RootObject }) => {
 										</div>
 									</div>
 									<div className="flex items-start flex-col">
-										<ReactMarkdown children={review.content} remarkPlugins={[remarkGfm]} skipHtml={false} />
+										<ReactMarkdown remarkPlugins={[remarkGfm]} skipHtml={false}>
+											{review.content}
+										</ReactMarkdown>
 									</div>
 								</div>
 								{index !== results.length - 1 ? <div className="divider"></div> : null}
