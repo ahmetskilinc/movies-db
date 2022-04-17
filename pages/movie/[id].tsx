@@ -5,8 +5,7 @@ import type { Credits } from "../../models/credits";
 import type { Movie } from "../../models/movie";
 import type { Movies } from "../../models/movie_popular";
 import type { ExternalIds } from "../../models/external_ids";
-import MoviesList from "../../components/MoviesList";
-import { Reviews } from "../../models/reviews";
+import type { Reviews } from "../../models/reviews";
 
 // dynamic components
 const LoadingSpinner = dynamic(() => import("../../components/LoadingSpinner"));
@@ -14,6 +13,7 @@ const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
 const RevenueBudgetView = dynamic(() => import("../../components/RevBudgetView"));
 const Reviews = dynamic(() => import("../../components/Reviews"));
+const MoviesList = dynamic(() => import("../../components/MoviesList"));
 
 const defaultEndpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
 
