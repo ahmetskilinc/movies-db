@@ -1,6 +1,6 @@
 const LoadingSpinner = () => {
 	return (
-		<div className="w-screen mt-6">
+		<div className="w-full mt-6">
 			<svg
 				role="status"
 				className="w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600 my-0 mx-auto"
