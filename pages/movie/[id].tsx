@@ -31,7 +31,26 @@ const Movie = (props: MoviePageProps) => {
 	return movie !== null && movieExternalIds !== null && movieCredits !== null && movieRecommendations !== null ? (
 		<>
 			<Head>
-				<title>{movie.title}</title>
+				{/* Other Meta */}
+				<title>{movie.title} | Movies | MovieDB</title>
+				<meta
+					name="keywords"
+					content={`${movie.title}, Movies, TV Shows, Popular Movies, Movie, Tv Show, Series, MovieDB, Ahmet, Kilinc, Ahmet Kilinc, AhmetK`}
+				/>
+
+				{/* OG Tags */}
+				<meta property="og:url" content="https://movies.ahmetk.dev" />
+				<meta property="og:title" content={`${movie.title} | MovieDB`} />
+				<meta property="og:description" content={movie.overview} />
+				<meta property="og:image" content={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+				<meta property="og:type" content="article" />
+
+				{/* Twitter Tags */}
+				<meta property="twitter:url" content="https://movies.ahmetk.dev" />
+				<meta property="twitter:card" content="summary_large_image" />
+				<meta property="twitter:title" content={`${movie.title} | MovieDB`} />
+				<meta property="twitter:description" content={movie.overview} />
+				<meta property="twitter:image" content={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
 			</Head>
 			<Hero movie={movie} externalIds={movieExternalIds} type="movie" />
 			<Cast credits={movieCredits} />
