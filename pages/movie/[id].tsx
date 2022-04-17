@@ -37,6 +37,7 @@ const Movie = (props: MoviePageProps) => {
 					name="keywords"
 					content={`${movie.title}, Movies, TV Shows, Popular Movies, Movie, Tv Show, Series, MovieDB, Ahmet, Kilinc, Ahmet Kilinc, AhmetK`}
 				/>
+				<meta name="description" content={movie.overview} />
 
 				{/* OG Tags */}
 				<meta property="og:url" content="https://movies.ahmetk.dev" />
