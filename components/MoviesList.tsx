@@ -16,18 +16,14 @@ const MoviesList = (props: MovieListProps) => {
 	const { movies, listTitle, type, compact } = props;
 	return (
 		<article className={`${compact ? `w-full my-2 md:my-4 mx-auto lg:max-w-cs px-cs` : ""}`}>
-			{movies.length > 0 ? (
-				<div className="lg:w-full_width_margin m-2 md:m-4">
-					<h1 className="text-white text-bold text-2xl mb-3">{listTitle}</h1>
-					<div className="flex overflow-x-scroll overflow-y-visible gap-4 rounded-xl">
-						{movies.map((movie) => (
-							<MovieCard key={movie.id} movie={movie} type={type} />
-						))}
-					</div>
+			<div className={`lg:w-full_width_margin${!compact ? ` m-2 md:m-4` : ""}`}>
+				<h1 className="text-white text-bold text-2xl mb-3">{listTitle}</h1>
+				<div className="flex overflow-x-scroll overflow-y-visible gap-4 rounded-xl">
+					{movies.map((movie) => (
+						<MovieCard key={movie.id} movie={movie} type={type} />
+					))}
 				</div>
-			) : (
-				<LoadingSpinner />
-			)}
+			</div>
 		</article>
 	);
 };

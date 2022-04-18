@@ -8,14 +8,22 @@ const RevenueBudgetView = (props: { budget: number; revenue: number }) => {
 				<div className="stat">
 					<div className="stat-title">Budget</div>
 					<div className="stat-value">
-						<CurrencyFormat value={budget} displayType={"text"} thousandSeparator={true} prefix={"$"} />
+						{budget === 0 ? (
+							<span className="text-gray-500">Unknown</span>
+						) : (
+							<CurrencyFormat value={budget} displayType={"text"} thousandSeparator={true} prefix={"$"} />
+						)}
 					</div>
 				</div>
 
 				<div className="stat">
 					<div className="stat-title">Revenue</div>
 					<div className="stat-value">
-						<CurrencyFormat value={revenue} displayType={"text"} thousandSeparator={true} prefix={"$"} />
+						{revenue === 0 ? (
+							<span className="text-gray-500">Unknown</span>
+						) : (
+							<CurrencyFormat value={revenue} displayType={"text"} thousandSeparator={true} prefix={"$"} />
+						)}
 					</div>
 				</div>
 			</div>

@@ -12,32 +12,38 @@ const Reviews = (props: { reviews: Reviews.RootObject }) => {
 	return (
 		<div className="w-full my-2 md:my-4 mx-auto lg:max-w-cs px-cs">
 			<div className="collapse rounded-md" style={{ display: "grid" }}>
-				<input type="checkbox" />
+				{results.length > 0 && <input type="checkbox" />}
 				<div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content flex items-center">
-					<h1 className="text-white text-bold text-2xl mr-3">{results.length} Reviews</h1>
-					<div className="avatar-group -space-x-6">
-						{results.slice(0, 3).map((review) => (
-							<div className="avatar" key={review.id}>
-								<div className="w-12">
-									<img
-										src={
-											review.author_details.avatar_path !== null && review.author_details.avatar_path.split("/").length === 2
-												? `https://image.tmdb.org/t/p/w150_and_h150_face/${review.author_details.avatar_path}`
-												: review.author_details.avatar_path !== null
-												? review.author_details.avatar_path.substring(1)
-												: "/images/placeholder.jpeg"
-										}
-										alt={review.author}
-									/>
+					<h1 className="text-white text-bold text-2xl mr-3">
+						{results.length} Review{results.length > 1 || results.length === 0 ? "s" : ""}
+					</h1>
+					{results.length > 0 && (
+						<div className="avatar-group -space-x-4">
+							{results.slice(0, 3).map((review) => (
+								<div className="avatar" key={review.id}>
+									<div className="w-8 h-8">
+										<img
+											src={
+												review.author_details.avatar_path !== null && review.author_details.avatar_path.split("/").length === 2
+													? `https://image.tmdb.org/t/p/w150_and_h150_face/${review.author_details.avatar_path}`
+													: review.author_details.avatar_path !== null
+													? review.author_details.avatar_path.substring(1)
+													: "/images/placeholder.jpeg"
+											}
+											alt={review.author}
+										/>
+									</div>
 								</div>
-							</div>
-						))}
-						<div className="avatar placeholder">
-							<div className="w-12 bg-neutral-focus text-neutral-content">
-								<span>+{results.length - 3}</span>
-							</div>
+							))}
+							{results.length > 3 && (
+								<div className="avatar placeholder">
+									<div className="w-8 h-8 bg-neutral-focus text-neutral-content">
+										<span>+{results.length - 3}</span>
+									</div>
+								</div>
+							)}
 						</div>
-					</div>
+					)}
 				</div>
 				<div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
 					<div className="flex flex-col">

@@ -6,6 +6,8 @@ import type { Movie } from "../../models/movie";
 import type { Movies } from "../../models/movie_popular";
 import type { ExternalIds } from "../../models/external_ids";
 import type { Reviews } from "../../models/reviews";
+import type { MovieWatchProviders } from "../../models/movie_watch_providers";
+import WatchProviders from "../../components/WatchProviders";
 
 // dynamic components
 const LoadingSpinner = dynamic(() => import("../../components/LoadingSpinner"));
@@ -23,12 +25,13 @@ interface MoviePageProps {
 	movieRecommendations: Movies.RootObject;
 	movieExternalIds: ExternalIds.RootObject;
 	movieReviews: Reviews.RootObject;
+	movieWatchProviders: MovieWatchProviders.RootObject;
 }
 
 const Movie = (props: MoviePageProps) => {
-	const { movie, movieCredits, movieExternalIds, movieRecommendations, movieReviews } = props;
+	const { movie, movieCredits, movieExternalIds, movieRecommendations, movieReviews, movieWatchProviders } = props;
 
-	return movie !== null && movieExternalIds !== null && movieCredits !== null && movieRecommendations !== null ? (
+	return movie !== null && movieExternalIds !== null && movieCredits !== null && movieRecommendations !== null && movieWatchProviders !== null ? (
 		<>
 			<Head>
 				{/* Other Meta */}
@@ -55,8 +58,9 @@ const Movie = (props: MoviePageProps) => {
 			</Head>
 			<Hero movie={movie} externalIds={movieExternalIds} type="movie" />
 			<Cast credits={movieCredits} />
-			<RevenueBudgetView budget={movie.budget} revenue={movie.revenue} />
+			<WatchProviders providers={movieWatchProviders.results} />
 			<Reviews reviews={movieReviews} />
+			<RevenueBudgetView budget={movie.budget} revenue={movie.revenue} />
 			<MoviesList listTitle="Similar Movies" movies={movieRecommendations.results} type="movie" compact={true} />
 		</>
 	) : (
@@ -83,6 +87,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const movieReviews = await fetch(`${defaultEndpoint}movie/${id}/reviews?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
 	const movieReviewsData = await movieReviews.json();
 
+	const movieWatchProviders = await fetch(`${defaultEndpoint}movie/${id}/watch/providers?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
+	const movieWatchProvidersData = await movieWatchProviders.json();
+
 	return {
 		props: {
 			movie: movieData,
@@ -90,6 +97,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			movieRecommendations: movieRecommendationsData,
 			movieExternalIds: movieExternalIdsData,
 			movieReviews: movieReviewsData,
+			movieWatchProviders: movieWatchProvidersData,
 		},
 	};
 };
