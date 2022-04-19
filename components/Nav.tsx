@@ -49,8 +49,6 @@ const Nav = () => {
 							onSubmit={(e) => {
 								e.preventDefault();
 								const searchInput = document.getElementById("search-input") as HTMLInputElement;
-								console.log(searchInput.value);
-
 								router.push("/search/" + searchInput.value);
 							}}
 						>
