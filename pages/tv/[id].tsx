@@ -1,17 +1,16 @@
 import type { GetServerSideProps } from "next";
-import dynamic from "next/dynamic";
-import Head from "next/head";
 import type { Credits } from "../../models/credits";
 import type { Tv } from "../../models/tv";
 import type { ExternalIds } from "../../models/external_ids";
 import type { Reviews } from "../../models/reviews";
+import dynamic from "next/dynamic";
+import Head from "next/head";
 import { TvPopular } from "../../models/tv_popular";
 
 // dynamic components
 const LoadingSpinner = dynamic(() => import("../../components/LoadingSpinner"));
 const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
-const RevenueBudgetView = dynamic(() => import("../../components/RevBudgetView"));
 const Reviews = dynamic(() => import("../../components/Reviews"));
 const MoviesList = dynamic(() => import("../../components/MoviesList"));
 

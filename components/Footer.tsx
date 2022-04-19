@@ -5,15 +5,17 @@ const Footer = () => {
 		<footer className="p-10 bg-base-200 text-base-content">
 			<div className="footer lg:max-w-cs mx-auto">
 				<div>
-					<svg className="h-full w-14 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.28 91.8">
-						<path
-							d="M93.27 91.8H80a6.82 6.82 0 0 1-6.12-3.8L33.17 4.92A3.42 3.42 0 0 1 36.24 0h12.61A6.81 6.81 0 0 1 55 3.82l41 83.66a3 3 0 0 1-2.73 4.32Z"
-							fill="#fefefe"
-						/>
-						<circle cx="13.8" cy="78" r="13.8" fill="#fefefe" />
-					</svg>
-					<p>MovieDB</p>
-					<a href="https://www.themoviedb.org/">
+					<a href="https://www.ahmetk.dev/" target="_blank" rel="noreferrer">
+						<svg className="h-full w-14 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96.28 91.8">
+							<path
+								d="M93.27 91.8H80a6.82 6.82 0 0 1-6.12-3.8L33.17 4.92A3.42 3.42 0 0 1 36.24 0h12.61A6.81 6.81 0 0 1 55 3.82l41 83.66a3 3 0 0 1-2.73 4.32Z"
+								fill="#fefefe"
+							/>
+							<circle cx="13.8" cy="78" r="13.8" fill="#fefefe" />
+						</svg>
+						<p>AhmetK.dev</p>
+					</a>
+					<a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
 						<svg className="h-full w-14 mr-2 mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 185.04 133.4">
 							<defs>
 								<linearGradient id="a" y1="66.7" x2="185.04" y2="66.7" gradientUnits="userSpaceOnUse">
@@ -34,44 +36,40 @@ const Footer = () => {
 					</a>
 				</div>
 				<div>
-					<span className="footer-title">Services</span>
-					<Link href="/test">
-						<a className="link link-hover">Branding</a>
+					<Link href="/movie">
+						<a className="link link-hover">
+							<span className="footer-title">Movies</span>
+						</a>
 					</Link>
-					<Link href="/test">
-						<a className="link link-hover">Design</a>
+					<Link href="/movie/popular">
+						<a className="link link-hover">Popular</a>
 					</Link>
-					<Link href="/test">
-						<a className="link link-hover">Marketing</a>
-					</Link>
-					<Link href="/test">
-						<a className="link link-hover">Advertisement</a>
+					<Link href="/movie/trending">
+						<a className="link link-hover">Trending</a>
 					</Link>
 				</div>
 				<div>
-					<span className="footer-title">Company</span>
-					<Link href="/test">
-						<a className="link link-hover">About us</a>
+					<Link href="/tv">
+						<a className="link link-hover">
+							<span className="footer-title">TV</span>
+						</a>
 					</Link>
-					<Link href="/test">
-						<a className="link link-hover">Contact</a>
+					<Link href="/tv/popular">
+						<a className="link link-hover">Popular</a>
 					</Link>
-					<Link href="/test">
-						<a className="link link-hover">Jobs</a>
-					</Link>
-					<Link href="/test">
-						<a className="link link-hover">Press kit</a>
+					<Link href="/tv/trending">
+						<a className="link link-hover">Trending</a>
 					</Link>
 				</div>
 				<div>
 					<span className="footer-title">Legal</span>
-					<Link href="/test">
+					<Link href="/terms">
 						<a className="link link-hover">Terms of use</a>
 					</Link>
-					<Link href="/test">
+					<Link href="/privacy">
 						<a className="link link-hover">Privacy policy</a>
 					</Link>
-					<Link href="/test">
+					<Link href="/cookies">
 						<a className="link link-hover">Cookie policy</a>
 					</Link>
 				</div>
