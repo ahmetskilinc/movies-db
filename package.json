@@ -27,6 +27,7 @@
 		"@types/react-currency-format": "^1.0.0",
 		"@types/react-dom": "18.0.0",
 		"autoprefixer": "^10.4.4",
+		"cssnano": "^5.1.7",
 		"eslint": "8.13.0",
 		"eslint-config-next": "12.1.5",
 		"postcss": "^8.4.12",
