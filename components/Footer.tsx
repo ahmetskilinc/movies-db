@@ -38,7 +38,7 @@ const Footer = () => {
 				<div>
 					<Link href="/movie">
 						<a className="link link-hover">
-							<span className="footer-title">Movies</span>
+							<span className="footer-title text-white">Movies</span>
 						</a>
 					</Link>
 					<Link href="/movie/popular">
@@ -51,7 +51,7 @@ const Footer = () => {
 				<div>
 					<Link href="/tv">
 						<a className="link link-hover">
-							<span className="footer-title">TV</span>
+							<span className="footer-title text-white">TV</span>
 						</a>
 					</Link>
 					<Link href="/tv/popular">
@@ -62,7 +62,7 @@ const Footer = () => {
 					</Link>
 				</div>
 				<div>
-					<span className="footer-title">Legal</span>
+					<span className="footer-title text-white">Legal</span>
 					<Link href="/terms">
 						<a className="link link-hover">Terms of use</a>
 					</Link>
