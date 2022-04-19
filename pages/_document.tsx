@@ -7,7 +7,7 @@ export default function Document() {
 				<meta charSet="utf-8" />
 				<meta name="keywords" content="Movies, TV Shows, Popular Movies, Movie, Tv Show, Series, MovieDB, Ahmet, Kilinc, Ahmet Kilinc, AhmetK" />
 			</Head>
-			<body style={{ paddingTop: "60px" }}>
+			<body>
 				<Main />
 				<NextScript />
 			</body>

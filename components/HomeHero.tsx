@@ -40,18 +40,17 @@ const HomeHero = (props: HomeHeroProps) => {
 								loading="lazy"
 								src={`https://image.tmdb.org/t/p/w342${movie.obj.poster_path}`}
 								alt={movie.type === "movie" ? movie.obj.title : movie.obj.name}
-								width={isMobile ? "176px" : "288px"}
-								height={isMobile ? "256px" : "384px"}
 								className="w-44 lg:w-72 h-64 lg:h-96 object-cover rounded-xl shadow-2xl lg:mr-6 mb-2 lg:mb-0"
 							/>
 							<div>
 								<h2 className="text-sm font-bold text-gray-400">{movie.title}</h2>
 								<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.type === "movie" ? movie.obj.title : movie.obj.name}</h1>
-								<p className="py-3 text-white">
-									{isMobile && !showMoreOverview
+								<p className="pt-3 pb-2 text-white">
+									{/* {isMobile && !showMoreOverview
 										? `${movie.obj.overview.split(" ").splice(0, 32).join(" ")}${movie.obj.overview.split(" ").length > 32 ? "..." : ""}`
-										: movie.obj.overview}{" "}
-									{isMobile && movie.obj.overview.split(" ").length > 32 ? (
+										: movie.obj.overview}{" "} */}
+									{movie.obj.overview}
+									{/* {isMobile && movie.obj.overview.split(" ").length > 32 ? (
 										<button
 											className="text-white underline background-transparent outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
 											type="button"
@@ -59,10 +58,10 @@ const HomeHero = (props: HomeHeroProps) => {
 										>
 											{showMoreOverview ? "Show less" : "Show more"}
 										</button>
-									) : null}
+									) : null} */}
 								</p>
 								<Link href={`${movie.type === "tv" ? "/tv" : "/movie"}/${movie.obj.id}`}>
-									<a className="bg-accent hover:bg-accent-focus text-white font-bold py-2 px-4 rounded-full transition-all">Show Me</a>
+									<a className="btn">Show me</a>
 								</Link>
 							</div>
 						</div>

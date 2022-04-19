@@ -11,17 +11,17 @@ const Reviews = (props: { reviews: Reviews.RootObject }) => {
 
 	return (
 		<div className="w-full my-2 md:my-4 mx-auto lg:max-w-cs px-cs">
-			<div className="collapse rounded-md" style={{ display: "grid" }}>
+			<div className="collapse rounded-md collapse-arrow" style={{ display: "grid" }}>
 				{results.length > 0 && <input type="checkbox" />}
-				<div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content flex items-center">
+				<div className="collapse-title bg-secondary-content text-secondary peer-checked:bg-secondary peer-checked:text-secondary-content flex items-center">
 					<h1 className="text-white text-bold text-2xl mr-3">
 						{results.length} Review{results.length > 1 || results.length === 0 ? "s" : ""}
 					</h1>
 					{results.length > 0 && (
-						<div className="avatar-group -space-x-4">
+						<div className="avatar-group -space-x-3">
 							{results.slice(0, 3).map((review) => (
 								<div className="avatar" key={review.id}>
-									<div className="w-8 h-8">
+									<div className="w-6 h-6">
 										<img
 											src={
 												review.author_details.avatar_path !== null && review.author_details.avatar_path.split("/").length === 2
@@ -37,21 +37,21 @@ const Reviews = (props: { reviews: Reviews.RootObject }) => {
 							))}
 							{results.length > 3 && (
 								<div className="avatar placeholder">
-									<div className="w-8 h-8 bg-neutral-focus text-neutral-content">
-										<span>+{results.length - 3}</span>
+									<div className="w-6 h-6 bg-neutral-focus text-neutral-content">
+										<p>+{results.length - 3}</p>
 									</div>
 								</div>
 							)}
 						</div>
 					)}
 				</div>
-				<div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+				<div className="collapse-content bg-secondary-content text-secondary peer-checked:bg-secondary peer-checked:text-secondary-content">
 					<div className="flex flex-col">
 						{results.map((review, index) => (
 							<React.Fragment key={review.id}>
 								<div>
 									<div className="flex items-center mb-2">
-										<div className="avatar h-10 mr-3">
+										<div className="avatar border-0 h-10 mr-3">
 											<div className="flex-shrink-0 w-10 h-10">
 												<img
 													className="rounded h-14 w-14 object-cover"
