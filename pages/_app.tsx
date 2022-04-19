@@ -13,15 +13,17 @@ import * as gtag from "../lib/gtag";
 function MyApp({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 	useEffect(() => {
-		const handleRouteChange = (url: string) => {
-			gtag.pageview(url);
-		};
-		router.events.on("routeChangeComplete", handleRouteChange);
-		router.events.on("hashChangeComplete", handleRouteChange);
-		return () => {
-			router.events.off("routeChangeComplete", handleRouteChange);
-			router.events.off("hashChangeComplete", handleRouteChange);
-		};
+		if (process.env.NEXT_PUBLIC_ENV === "production") {
+			const handleRouteChange = (url: string) => {
+				gtag.pageview(url);
+			};
+			router.events.on("routeChangeComplete", handleRouteChange);
+			router.events.on("hashChangeComplete", handleRouteChange);
+			return () => {
+				router.events.off("routeChangeComplete", handleRouteChange);
+				router.events.off("hashChangeComplete", handleRouteChange);
+			};
+		}
 	}, [router.events]);
 	return (
 		<>
