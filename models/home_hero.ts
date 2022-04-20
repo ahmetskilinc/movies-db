@@ -1,10 +1,12 @@
-import { Movies } from "./movie_popular";
-import { TvPopular } from "./tv_popular";
-
 export declare module HomeHeroType {
 	interface RootObject {
-		obj: Movies.Result | TvPopular.Result;
-		type: string;
+		poster_path: string;
 		title: string;
+		name: string;
+		overview: string;
+		id: number;
+		backdrop_path: string;
+		type: string;
+		hero_title: string;
 	}
 }

@@ -1,33 +1,97 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
-// import axios from "axios";
+import { Movies } from "../../../models/movie_popular";
+import type { TvPopular } from "../../../models/tv_popular";
 
 const endpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
 const key = process.env.NEXT_PUBLIC_TMDB_KEY;
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	const responseHomeHeroMovie = await fetch(`${endpoint}trending/movie/day?api_key=${key}`);
-	const dataHomeHeroMovie = await responseHomeHeroMovie.json();
+	const trendingMoviesTodayAxios = await axios({
+		method: "get",
+		url: `${endpoint}trending/movie/day?api_key=${key}`,
+	}).then((response) => {
+		const data = response.data;
+		return [
+			{
+				poster_path: data.results[0].poster_path,
+				title: data.results[0].title,
+				overview: data.results[0].overview,
+				id: data.results[0].id,
+				backdrop_path: data.results[0].backdrop_path,
+				type: "movie",
+				hero_title: "Trending Movie",
+			},
+			{
+				poster_path: data.results[1].poster_path,
+				title: data.results[1].title,
+				overview: data.results[1].overview,
+				id: data.results[1].id,
+				backdrop_path: data.results[1].backdrop_path,
+				type: "movie",
+				hero_title: "Trending Movie",
+			},
+		];
+	});
 
-	const responseHomeHeroTv = await fetch(`${endpoint}trending/tv/day?api_key=${key}`);
-	const dataHomeHeroTv = await responseHomeHeroTv.json();
+	const trendingTvTodayAxios = await axios({
+		method: "get",
+		url: `${endpoint}trending/tv/day?api_key=${key}`,
+	}).then((response) => {
+		const data = response.data;
+		return [
+			{
+				poster_path: data.results[0].poster_path,
+				title: data.results[0].title,
+				overview: data.results[0].overview,
+				id: data.results[0].id,
+				backdrop_path: data.results[0].backdrop_path,
+				type: "movie",
+				hero_title: "Trending Movie",
+			},
+			{
+				poster_path: data.results[1].poster_path,
+				title: data.results[1].title,
+				overview: data.results[1].overview,
+				id: data.results[1].id,
+				backdrop_path: data.results[1].backdrop_path,
+				type: "movie",
+				hero_title: "Trending Movie",
+			},
+		];
+	});
 
-	const trendingToday = [
-		{ obj: dataHomeHeroMovie.results[0], type: "movie", title: "Trending Movie" },
-		{ obj: dataHomeHeroMovie.results[1], type: "movie", title: "Trending Movie" },
-		{ obj: dataHomeHeroTv.results[0], type: "tv", title: "Trending TV Show" },
-		{ obj: dataHomeHeroTv.results[1], type: "tv", title: "Trending TV Show" },
-	];
+	const moviesPopular = await axios({
+		method: "get",
+		url: `${endpoint}movie/popular?api_key=${key}&language=en-US&page=1`,
+	}).then((response) => {
+		return response.data.results.map((item: Movies.Result) => {
+			return {
+				id: item.id,
+				title: item.title,
+				poster_path: item.poster_path,
+			};
+		});
+	});
 
-	const responseMovies = await fetch(`${endpoint}movie/popular?api_key=${key}&language=en-US&page=1`);
-	const dataMovies = await responseMovies.json();
+	const tvPopular = await axios({
+		method: "get",
+		url: `${endpoint}tv/popular?api_key=${key}&language=en-US&page=1`,
+	}).then((response) => {
+		return response.data.results.map((item: TvPopular.Result) => {
+			return {
+				id: item.id,
+				name: item.name,
+				poster_path: item.poster_path,
+			};
+		});
+	});
 
-	const responseTv = await fetch(`${endpoint}tv/popular?api_key=${key}&language=en-US&page=1`);
-	const dataTv = await responseTv.json();
+	const trendingToday = [...trendingMoviesTodayAxios, ...trendingTvTodayAxios];
 
 	return res.status(200).json({
 		homeHero: trendingToday,
-		moviesPopular: dataMovies.results,
-		tvPopular: dataTv.results,
+		moviesPopular,
+		tvPopular,
 	});
 };

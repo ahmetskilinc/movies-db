@@ -33,20 +33,20 @@ const HomeHero = (props: HomeHeroProps) => {
 						className={`carousel-item float-left ${
 							index === 0 ? "active" : ""
 						} w-full py-8 relative after:content-[''] after:bg-slate-500 after:w-full after:h-full after:bg-opacity-60 after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-[1] bg-cover bg-center`}
-						style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w780${movie.obj.backdrop_path})` }}
+						style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w780${movie.backdrop_path})` }}
 					>
 						<div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:max-w-cs relative z-10 px-6 lg:px-cs ">
 							<img
 								loading="lazy"
-								src={`https://image.tmdb.org/t/p/w342${movie.obj.poster_path}`}
-								alt={movie.type === "movie" ? movie.obj.title : movie.obj.name}
+								src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+								alt={movie.type === "movie" ? movie.title : movie.name}
 								className="w-44 lg:w-72 h-64 lg:h-96 object-cover rounded-xl shadow-2xl lg:mr-6 mb-2 lg:mb-0"
 							/>
 							<div>
 								<h2 className="text-sm font-bold text-gray-400">{movie.title}</h2>
-								<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.type === "movie" ? movie.obj.title : movie.obj.name}</h1>
-								<p className="pt-3 pb-2 text-white">{movie.obj.overview}</p>
-								<Link href={`${movie.type === "tv" ? "/tv" : "/movie"}/${movie.obj.id}`}>
+								<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.type === "movie" ? movie.title : movie.name}</h1>
+								<p className="pt-3 pb-2 text-white">{movie.overview}</p>
+								<Link href={`${movie.type === "tv" ? "/tv" : "/movie"}/${movie.id}`}>
 									<a className="btn">Show me</a>
 								</Link>
 							</div>
