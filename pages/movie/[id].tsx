@@ -10,7 +10,6 @@ import type { MovieWatchProviders } from "../../models/movie_watch_providers";
 import WatchProviders from "../../components/WatchProviders";
 
 // dynamic components
-const LoadingSpinner = dynamic(() => import("../../components/LoadingSpinner"));
 const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
 const RevenueBudgetView = dynamic(() => import("../../components/RevBudgetView"));
@@ -31,7 +30,7 @@ interface MoviePageProps {
 const Movie = (props: MoviePageProps) => {
 	const { movie, movieCredits, movieExternalIds, movieRecommendations, movieReviews, movieWatchProviders } = props;
 
-	return movie !== null && movieExternalIds !== null && movieCredits !== null && movieRecommendations !== null && movieWatchProviders !== null ? (
+	return (
 		<>
 			<Head>
 				{/* Other Meta */}
@@ -56,15 +55,13 @@ const Movie = (props: MoviePageProps) => {
 				<meta property="twitter:description" content={movie.overview} />
 				<meta property="twitter:image" content={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
 			</Head>
-			<Hero movie={movie} externalIds={movieExternalIds} type="movie" />
-			<Cast credits={movieCredits} />
-			<WatchProviders providers={movieWatchProviders.results} />
-			<Reviews reviews={movieReviews} />
-			<RevenueBudgetView budget={movie.budget} revenue={movie.revenue} />
-			<MoviesList listTitle="Similar Movies" movies={movieRecommendations.results} type="movie" compact={true} />
+			{movie !== null && <Hero movie={movie} externalIds={movieExternalIds} type="movie" />}
+			{movieCredits !== null && <Cast credits={movieCredits} />}
+			{movieWatchProviders !== null && <WatchProviders providers={movieWatchProviders.results} />}
+			{movieReviews !== null && <Reviews reviews={movieReviews} />}
+			{movie !== null && <RevenueBudgetView budget={movie.budget} revenue={movie.revenue} />}
+			{movieRecommendations !== null && <MoviesList listTitle="Similar Movies" movies={movieRecommendations.results} type="movie" compact={true} />}
 		</>
-	) : (
-		<LoadingSpinner />
 	);
 };
 

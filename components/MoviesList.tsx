@@ -3,7 +3,6 @@ import { Movies } from "../models/movie_popular";
 import { TvPopular } from "../models/tv_popular";
 
 const MovieCard = dynamic(() => import("./MovieCard"));
-const LoadingSpinner = dynamic(() => import("./LoadingSpinner"));
 
 interface MovieListProps {
 	movies: Movies.Result[] | TvPopular.Result[];

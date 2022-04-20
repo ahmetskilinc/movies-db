@@ -5,7 +5,6 @@ import type { TvPopular } from "../../models/tv_popular";
 // components
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import LoadingSpinner from "../../components/LoadingSpinner";
 import { useRouter } from "next/router";
 
 // dynamic components
@@ -50,15 +49,9 @@ const Home = (props: HomeProps) => {
 						</svg>
 					</button>
 				</form>
-				{moviesSearch !== null && tvSearch !== null ? (
-					<>
-						<MoviesList movies={moviesSearch} listTitle={`${query} in Movies`} type="movie" compact={false} />
-						<div className="divider"></div>
-						<MoviesList movies={tvSearch} listTitle={`${query} in TV`} type="tv" compact={false} />
-					</>
-				) : (
-					<LoadingSpinner />
-				)}
+				{moviesSearch !== null && <MoviesList movies={moviesSearch} listTitle={`${query} in Movies`} type="movie" compact={false} />}
+				<div className="divider"></div>
+				{tvSearch !== null && <MoviesList movies={tvSearch} listTitle={`${query} in TV`} type="tv" compact={false} />}
 			</main>
 		</>
 	);

@@ -6,7 +6,6 @@ import type { TvPopular } from "../models/tv_popular";
 // components
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import LoadingSpinner from "../components/LoadingSpinner";
 
 // dynamic components
 const MoviesList = dynamic(() => import("../components/MoviesList"));
@@ -32,20 +31,10 @@ const Home = (props: HomeProps) => {
 			</Head>
 
 			<main>
-				{homeHero !== null && moviesPopular !== null && tvPopular !== null ? (
-					<>
-						<HomeHero movies={homeHero} />
-						<MoviesList movies={moviesPopular} listTitle="Popular movies this week" type="movie" compact={false} />
-						<div className="divider"></div>
-						<MoviesList movies={tvPopular} listTitle="Popular TV shows this week" type="tv" compact={false} />
-						{/* <div className="divider"></div>
-						<MoviesList movies={topRatedMovies} listTitle="Top rated movies" type="movie" compact={false} />
-						<div className="divider"></div>
-						<MoviesList movies={topRatedTvShows} listTitle="Top rated TV shows" type="tv" compact={false} /> */}
-					</>
-				) : (
-					<LoadingSpinner />
-				)}
+				{homeHero !== null && <HomeHero movies={homeHero} />}
+				{moviesPopular !== null && <MoviesList movies={moviesPopular} listTitle="Popular movies this week" type="movie" compact={false} />}
+				<div className="divider"></div>
+				{tvPopular !== null && <MoviesList movies={tvPopular} listTitle="Popular TV shows this week" type="tv" compact={false} />}
 			</main>
 		</>
 	);
