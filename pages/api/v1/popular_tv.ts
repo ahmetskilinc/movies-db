@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { key, endpoint } from "../../../lib/api_lib";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const PopularTvApi = async (req: NextApiRequest, res: NextApiResponse) => {
 	const popularTv1 = await axios({
 		method: "get",
 		url: `${endpoint}tv/popular?api_key=${key}&language=en-US&page=1`,
@@ -38,3 +38,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		popularTv4,
 	});
 };
+
+export default PopularTvApi;

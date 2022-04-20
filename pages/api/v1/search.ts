@@ -5,7 +5,7 @@ import type { Movies } from "../../../models/movie_popular";
 import type { TvPopular } from "../../../models/tv_popular";
 import type { HomeHeroType } from "../../../models/home_hero";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const SearchApi = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { q } = req.query;
 	const moviesSearch = await axios({
 		method: "get",
@@ -38,3 +38,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		tvSearch,
 	});
 };
+
+export default SearchApi;

@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { key, endpoint } from "../../../lib/api_lib";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const TvApi = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { id } = req.query;
 
 	const movieData = await axios({
@@ -48,3 +48,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		movieReviews: movieReviewsData,
 	});
 };
+
+export default TvApi;
