@@ -2,9 +2,7 @@ import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Movies } from "../../../models/movie_popular";
 import type { TvPopular } from "../../../models/tv_popular";
-
-const endpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
-const key = process.env.NEXT_PUBLIC_TMDB_KEY;
+import { key, endpoint } from "../../../lib/api_lib";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const trendingMoviesTodayAxios = await axios({
@@ -87,10 +85,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		});
 	});
 
-	const trendingToday = [...trendingMoviesTodayAxios, ...trendingTvTodayAxios];
+	const homeHero = [...trendingMoviesTodayAxios, ...trendingTvTodayAxios];
 
 	return res.status(200).json({
-		homeHero: trendingToday,
+		homeHero,
 		moviesPopular,
 		tvPopular,
 	});
