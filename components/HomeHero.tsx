@@ -43,7 +43,6 @@ const HomeHero = (props: HomeHeroProps) => {
 								className="w-44 lg:w-72 h-64 lg:h-96 object-cover rounded-xl shadow-2xl lg:mr-6 mb-2 lg:mb-0"
 							/>
 							<div>
-								<h2 className="text-sm font-bold text-gray-400">{movie.title}</h2>
 								<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.type === "movie" ? movie.title : movie.name}</h1>
 								<p className="pt-3 pb-2 text-white">{movie.overview}</p>
 								<Link href={`${movie.type === "tv" ? "/tv" : "/movie"}/${movie.id}`}>
