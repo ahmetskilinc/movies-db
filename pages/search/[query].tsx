@@ -10,8 +10,6 @@ import { useRouter } from "next/router";
 // dynamic components
 const MoviesList = dynamic(() => import("../../components/MoviesList"));
 
-const defaultEndpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
-
 interface HomeProps {
 	moviesSearch: Movies.Result[];
 	tvSearch: TvPopular.Result[];
@@ -61,20 +59,11 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { query } = context.query;
-	const responseMovies = await fetch(
-		`${defaultEndpoint}search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&page=1&query=${encodeURI(query as string)}&include_adult=true`
-	);
-	const dataMovies = await responseMovies.json();
-
-	const responseTv = await fetch(
-		`${defaultEndpoint}search/tv?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&page=1&query=${encodeURI(query as string)}&include_adult=true`
-	);
-	const dataTv = await responseTv.json();
-
+	const { moviesSearch, tvSearch } = await (await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}search?q=${query}`)).json();
 	return {
 		props: {
-			moviesSearch: dataMovies.results,
-			tvSearch: dataTv.results,
+			moviesSearch,
+			tvSearch,
 		},
 	};
 };

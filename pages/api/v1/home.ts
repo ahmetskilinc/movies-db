@@ -1,62 +1,44 @@
 import axios from "axios";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { Movies } from "../../../models/movie_popular";
-import type { TvPopular } from "../../../models/tv_popular";
 import { key, endpoint } from "../../../lib/api_lib";
+import type { NextApiRequest, NextApiResponse } from "next";
+import type { Movies } from "../../../models/movie_popular";
+import type { TvPopular } from "../../../models/tv_popular";
+import type { HomeHeroType } from "../../../models/home_hero";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	const trendingMoviesTodayAxios = await axios({
+	let homeHero: HomeHeroType.RootObject[] = [];
+	axios({
 		method: "get",
 		url: `${endpoint}trending/movie/day?api_key=${key}`,
 	}).then((response) => {
-		const data = response.data;
-		return [
-			{
-				poster_path: data.results[0].poster_path,
-				title: data.results[0].title,
-				overview: data.results[0].overview,
-				id: data.results[0].id,
-				backdrop_path: data.results[0].backdrop_path,
+		response.data.results.slice(0, 2).map((item: HomeHeroType.RootObject) => {
+			homeHero.push({
+				poster_path: item.poster_path,
+				title: item.title,
+				overview: item.overview,
+				id: item.id,
+				backdrop_path: item.backdrop_path,
 				type: "movie",
 				hero_title: "Trending Movie",
-			},
-			{
-				poster_path: data.results[1].poster_path,
-				title: data.results[1].title,
-				overview: data.results[1].overview,
-				id: data.results[1].id,
-				backdrop_path: data.results[1].backdrop_path,
-				type: "movie",
-				hero_title: "Trending Movie",
-			},
-		];
+			} as HomeHeroType.RootObject);
+		});
 	});
 
-	const trendingTvTodayAxios = await axios({
+	axios({
 		method: "get",
 		url: `${endpoint}trending/tv/day?api_key=${key}`,
 	}).then((response) => {
-		const data = response.data;
-		return [
-			{
-				poster_path: data.results[0].poster_path,
-				title: data.results[0].title,
-				overview: data.results[0].overview,
-				id: data.results[0].id,
-				backdrop_path: data.results[0].backdrop_path,
-				type: "movie",
-				hero_title: "Trending Movie",
-			},
-			{
-				poster_path: data.results[1].poster_path,
-				title: data.results[1].title,
-				overview: data.results[1].overview,
-				id: data.results[1].id,
-				backdrop_path: data.results[1].backdrop_path,
-				type: "movie",
-				hero_title: "Trending Movie",
-			},
-		];
+		response.data.results.slice(0, 2).map((item: HomeHeroType.RootObject) => {
+			homeHero.push({
+				poster_path: item.poster_path,
+				title: item.title,
+				overview: item.overview,
+				id: item.id,
+				backdrop_path: item.backdrop_path,
+				type: "tv",
+				hero_title: "Trending TV",
+			} as HomeHeroType.RootObject);
+		});
 	});
 
 	const moviesPopular = await axios({
@@ -84,8 +66,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			};
 		});
 	});
-
-	const homeHero = [...trendingMoviesTodayAxios, ...trendingTvTodayAxios];
 
 	return res.status(200).json({
 		homeHero,

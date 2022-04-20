@@ -63,28 +63,16 @@ export default Tv;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { id } = context.query;
-	const movie = await fetch(`${defaultEndpoint}tv/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
-	const movieData = await movie.json();
-
-	const movieRecommendations = await fetch(`${defaultEndpoint}tv/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
-	const movieRecommendationsData = await movieRecommendations.json();
-
-	const movieCredits = await fetch(`${defaultEndpoint}tv/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
-	const movieCreditsData = await movieCredits.json();
-
-	const movieExternalIds = await fetch(`${defaultEndpoint}tv/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
-	const movieExternalIdsData = await movieExternalIds.json();
-
-	const movieReviews = await fetch(`${defaultEndpoint}tv/${id}/reviews?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`);
-	const movieReviewsData = await movieReviews.json();
-
+	const { movie, movieCredits, movieRecommendations, movieExternalIds, movieReviews, movieWatchProviders } = await (
+		await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}tv?id=${id}`)
+	).json();
 	return {
 		props: {
-			movie: movieData,
-			movieCredits: movieCreditsData,
-			movieRecommendations: movieRecommendationsData,
-			movieExternalIds: movieExternalIdsData,
-			movieReviews: movieReviewsData,
+			movie: movie,
+			movieCredits: movieCredits,
+			movieRecommendations: movieRecommendations,
+			movieExternalIds: movieExternalIds,
+			movieReviews: movieReviews,
 		},
 	};
 };
