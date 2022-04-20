@@ -1,4 +1,3 @@
-import { isMobile } from "react-device-detect";
 import Link from "next/link";
 import { Movies } from "../models/movie_popular";
 import { TvPopular } from "../models/tv_popular";

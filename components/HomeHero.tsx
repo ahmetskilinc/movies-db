@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { isMobile } from "react-device-detect";
 import Link from "next/link";
 import { HomeHeroType } from "../models/home_hero";
 
