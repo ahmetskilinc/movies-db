@@ -37,40 +37,44 @@ const Footer = () => {
 				</div>
 				<div>
 					<Link href="/movie">
-						<a className="link link-hover">
-							<span className="footer-title text-white">Movies</span>
+						<a className="link link-hover p-1 md:p-0">
+							<span className="footer-title">Movies</span>
 						</a>
 					</Link>
 					<Link href="/movie/popular">
-						<a className="link link-hover">Popular</a>
+						<a className="link link-hover p-1 md:p-0">Popular</a>
 					</Link>
 					<Link href="/movie/trending">
-						<a className="link link-hover">Trending</a>
+						<a className="link link-hover p-1 md:p-0">Trending</a>
 					</Link>
 				</div>
 				<div>
 					<Link href="/tv">
-						<a className="link link-hover">
-							<span className="footer-title text-white">TV</span>
+						<a className="link link-hover p-1 md:p-0">
+							<span className="footer-title">TV</span>
 						</a>
 					</Link>
 					<Link href="/tv/popular">
-						<a className="link link-hover">Popular</a>
+						<a className="link link-hover p-1 md:p-0">Popular</a>
 					</Link>
 					<Link href="/tv/trending">
-						<a className="link link-hover">Trending</a>
+						<a className="link link-hover p-1 md:p-0">Trending</a>
 					</Link>
 				</div>
 				<div>
-					<span className="footer-title text-white">Legal</span>
+					<Link href="/legal">
+						<a className="link link-hover p-1 md:p-0">
+							<span className="footer-title">Legal</span>
+						</a>
+					</Link>
 					<Link href="/terms">
-						<a className="link link-hover">Terms of use</a>
+						<a className="link link-hover p-1 md:p-0">Terms of use</a>
 					</Link>
 					<Link href="/privacy">
-						<a className="link link-hover">Privacy policy</a>
+						<a className="link link-hover p-1 md:p-0">Privacy policy</a>
 					</Link>
 					<Link href="/cookies">
-						<a className="link link-hover">Cookie policy</a>
+						<a className="link link-hover p-1 md:p-0">Cookie policy</a>
 					</Link>
 				</div>
 			</div>
