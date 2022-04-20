@@ -31,7 +31,7 @@ const HomeApi = async (req: NextApiRequest, res: NextApiResponse) => {
 		response.data.results.slice(0, 2).map((item: HomeHeroType.RootObject) => {
 			homeHero.push({
 				poster_path: item.poster_path,
-				title: item.title,
+				name: item.name,
 				overview: item.overview,
 				id: item.id,
 				backdrop_path: item.backdrop_path,
