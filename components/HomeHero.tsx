@@ -45,21 +45,7 @@ const HomeHero = (props: HomeHeroProps) => {
 							<div>
 								<h2 className="text-sm font-bold text-gray-400">{movie.title}</h2>
 								<h1 className="text-xl lg:text-5xl font-bold text-white">{movie.type === "movie" ? movie.obj.title : movie.obj.name}</h1>
-								<p className="pt-3 pb-2 text-white">
-									{/* {isMobile && !showMoreOverview
-										? `${movie.obj.overview.split(" ").splice(0, 32).join(" ")}${movie.obj.overview.split(" ").length > 32 ? "..." : ""}`
-										: movie.obj.overview}{" "} */}
-									{movie.obj.overview}
-									{/* {isMobile && movie.obj.overview.split(" ").length > 32 ? (
-										<button
-											className="text-white underline background-transparent outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-											type="button"
-											onClick={() => setShowMoreOverview(!showMoreOverview)}
-										>
-											{showMoreOverview ? "Show less" : "Show more"}
-										</button>
-									) : null} */}
-								</p>
+								<p className="pt-3 pb-2 text-white">{movie.obj.overview}</p>
 								<Link href={`${movie.type === "tv" ? "/tv" : "/movie"}/${movie.obj.id}`}>
 									<a className="btn">Show me</a>
 								</Link>
