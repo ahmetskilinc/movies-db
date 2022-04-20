@@ -17,13 +17,23 @@ const Nav = () => {
 							</Link>
 						</li>
 						<li>
-							<Link href="/movie">
-								<a>Movies</a>
+							<Link href="/movie/popular">
+								<a>Popular Movies</a>
 							</Link>
 						</li>
 						<li>
-							<Link href="/tv">
-								<a>TV Shows</a>
+							<Link href="/movie/trending">
+								<a>Trending Movies</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="/tv/popular">
+								<a>PopularTV Shows</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="/tv/trending">
+								<a>Trending TV Shows</a>
 							</Link>
 						</li>
 					</ul>

@@ -36,11 +36,7 @@ const Footer = () => {
 					</a>
 				</div>
 				<div>
-					<Link href="/movie">
-						<a className="link link-hover p-1 md:p-0">
-							<span className="footer-title">Movies</span>
-						</a>
-					</Link>
+					<span className="footer-title p-1 md:p-0">Movies</span>
 					<Link href="/movie/popular">
 						<a className="link link-hover p-1 md:p-0">Popular</a>
 					</Link>
@@ -49,11 +45,7 @@ const Footer = () => {
 					</Link>
 				</div>
 				<div>
-					<Link href="/tv">
-						<a className="link link-hover p-1 md:p-0">
-							<span className="footer-title">TV</span>
-						</a>
-					</Link>
+					<span className="footer-title p-1 md:p-0">TV</span>
 					<Link href="/tv/popular">
 						<a className="link link-hover p-1 md:p-0">Popular</a>
 					</Link>
@@ -62,11 +54,7 @@ const Footer = () => {
 					</Link>
 				</div>
 				<div>
-					<Link href="/legal">
-						<a className="link link-hover p-1 md:p-0">
-							<span className="footer-title">Legal</span>
-						</a>
-					</Link>
+					<span className="footer-title p-1 md:p-0">Legal</span>
 					<Link href="/terms">
 						<a className="link link-hover p-1 md:p-0">Terms of use</a>
 					</Link>

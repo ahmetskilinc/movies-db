@@ -3,38 +3,38 @@ import axios from "axios";
 import { key, endpoint } from "../../../lib/api_lib";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	const popularMovies1 = await axios({
+	const popularTv1 = await axios({
 		method: "get",
-		url: `${endpoint}movie/popular?api_key=${key}&language=en-US&page=1`,
+		url: `${endpoint}tv/popular?api_key=${key}&language=en-US&page=1`,
 	}).then((response) => {
 		return response.data.results;
 	});
 
-	const popularMovies2 = await axios({
+	const popularTv2 = await axios({
 		method: "get",
-		url: `${endpoint}movie/popular?api_key=${key}&language=en-US&page=2`,
+		url: `${endpoint}tv/popular?api_key=${key}&language=en-US&page=2`,
 	}).then((response) => {
 		return response.data.results;
 	});
 
-	const popularMovies3 = await axios({
+	const popularTv3 = await axios({
 		method: "get",
-		url: `${endpoint}movie/popular?api_key=${key}&language=en-US&page=3`,
+		url: `${endpoint}tv/popular?api_key=${key}&language=en-US&page=3`,
 	}).then((response) => {
 		return response.data.results;
 	});
 
-	const popularMovies4 = await axios({
+	const popularTv4 = await axios({
 		method: "get",
-		url: `${endpoint}movie/popular?api_key=${key}&language=en-US&page=4`,
+		url: `${endpoint}tv/popular?api_key=${key}&language=en-US&page=4`,
 	}).then((response) => {
 		return response.data.results;
 	});
 
 	return res.status(200).json({
-		popularMovies1,
-		popularMovies2,
-		popularMovies3,
-		popularMovies4,
+		popularTv1,
+		popularTv2,
+		popularTv3,
+		popularTv4,
 	});
 };
