@@ -25,9 +25,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 			};
 		}
 	}, [router.events]);
+
+	useEffect(() => {
+		import("tw-elements");
+	}, []);
 	return (
 		<>
-			<Script src="../js/index.min.js" strategy="lazyOnload" />
+			{/* <Script src="../js/index.min.js" strategy="lazyOnload" /> */}
 			{process.env.NEXT_PUBLIC_ENV === "production" ? (
 				<>
 					<Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
