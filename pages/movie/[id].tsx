@@ -1,13 +1,12 @@
 import type { GetServerSideProps } from "next";
-import dynamic from "next/dynamic";
-import Head from "next/head";
 import type { Credits } from "../../models/credits";
 import type { Movie } from "../../models/movie";
 import type { Movies } from "../../models/movie_popular";
 import type { ExternalIds } from "../../models/external_ids";
 import type { Reviews } from "../../models/reviews";
 import type { MovieWatchProviders } from "../../models/movie_watch_providers";
-import WatchProviders from "../../components/WatchProviders";
+import dynamic from "next/dynamic";
+import Head from "next/head";
 
 // dynamic components
 const Hero = dynamic(() => import("../../components/Hero"));
@@ -15,8 +14,7 @@ const Cast = dynamic(() => import("../../components/Cast"));
 const RevenueBudgetView = dynamic(() => import("../../components/RevBudgetView"));
 const Reviews = dynamic(() => import("../../components/Reviews"));
 const MoviesList = dynamic(() => import("../../components/MoviesList"));
-
-const defaultEndpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
+const WatchProviders = dynamic(() => import("../../components/WatchProviders"));
 
 interface MoviePageProps {
 	movie: Movie.RootObject;

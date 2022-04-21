@@ -4,7 +4,6 @@ import { key, endpoint } from "../../../lib/api_lib";
 
 const TvApi = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { id } = req.query;
-
 	const movieData = await axios({
 		method: "get",
 		url: `${endpoint}tv/${id}?api_key=${key}`,

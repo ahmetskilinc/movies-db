@@ -3,17 +3,15 @@ import type { Credits } from "../../models/credits";
 import type { Tv } from "../../models/tv";
 import type { ExternalIds } from "../../models/external_ids";
 import type { Reviews } from "../../models/reviews";
+import type { TvPopular } from "../../models/tv_popular";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { TvPopular } from "../../models/tv_popular";
 
 // dynamic components
 const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
 const Reviews = dynamic(() => import("../../components/Reviews"));
 const MoviesList = dynamic(() => import("../../components/MoviesList"));
-
-const defaultEndpoint = process.env.NEXT_PUBLIC_DEFAULT_ENDPOINT;
 
 interface TvPageProps {
 	movie: Tv.RootObject;

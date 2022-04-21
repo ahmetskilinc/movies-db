@@ -1,9 +1,9 @@
 // types
+import type { Movies } from "../../models/movie_popular";
 // components
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import MoviesList from "../../components/MoviesList";
-import { Movies } from "../../models/movie_popular";
 
 interface PopularMoviesProps {
 	popularMovies1: Movies.Result[];
@@ -38,7 +38,6 @@ const MoviePopular = (props: PopularMoviesProps) => {
 export default MoviePopular;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	const { id } = context.query;
 	const { popularMovies1, popularMovies2, popularMovies3, popularMovies4 } = await (
 		await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}popular_movies`)
 	).json();
