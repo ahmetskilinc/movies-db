@@ -28,7 +28,7 @@ const WatchProviders = (props: WatchProvidersProps) => {
 				))}
 			</select>
 			<div className="mt-3">
-				{selectedProvider !== undefined ? (
+				{selectedCountry !== "" ? (
 					<>
 						{selectedProvider.buy?.length > 0 && selectedProvider.flatrate?.length > 0 && selectedProvider.rent?.length > 0 ? (
 							<>
