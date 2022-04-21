@@ -30,11 +30,19 @@ const WatchProviders = (props: WatchProvidersProps) => {
 			<div className="mt-3">
 				{selectedProvider !== undefined ? (
 					<>
-						<WatchProviderList provider={selectedProvider.rent} title="Rent" />
-						<WatchProviderList provider={selectedProvider.buy} title="Buy" />
-						<WatchProviderList provider={selectedProvider.flatrate} title="Flat Rate" />
+						{selectedProvider.buy?.length > 0 && selectedProvider.flatrate?.length > 0 && selectedProvider.rent?.length > 0 ? (
+							<>
+								<WatchProviderList provider={selectedProvider.rent} title="Rent" />
+								<WatchProviderList provider={selectedProvider.buy} title="Buy" />
+								<WatchProviderList provider={selectedProvider.flatrate} title="Flat Rate" />
+							</>
+						) : (
+							<p className="text-center">No providers available</p>
+						)}
 					</>
-				) : null}
+				) : (
+					<p className="text-center">Select a country to see the providers</p>
+				)}
 			</div>
 		</Collapse>
 	);
