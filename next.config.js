@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+import withPWA from "next-pwa";
+
+const nextConfig = withPWA({
+	pwa: {
+		dest: "public",
+	},
 	reactStrictMode: true,
 	images: {
 		domains: ["image.tmdb.org"],
@@ -18,6 +24,6 @@ const nextConfig = {
 			},
 		];
 	},
-};
+});
 
-module.exports = nextConfig;
+export default nextConfig;
