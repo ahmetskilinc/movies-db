@@ -1,11 +1,11 @@
 // types
-import type { PopularMoviesProps } from "../../models/props";
+import type { PopularTvProps } from "../../models/props";
 // components
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import MoviesList from "../../components/MoviesList";
 
-const TvPopular = (props: PopularMoviesProps) => {
+const TvPopular = (props: PopularTvProps) => {
 	const { popularTv1, popularTv2, popularTv3, popularTv4 } = props;
 	return (
 		<>

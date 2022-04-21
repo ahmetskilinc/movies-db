@@ -14,7 +14,7 @@ const MoviesList = dynamic(() => import("../../components/MoviesList"));
 const WatchProviders = dynamic(() => import("../../components/WatchProviders"));
 
 const Movie = (props: MoviePageProps) => {
-	const { movie, movieCredits, movieExternalIds, movieRecommendations, movieReviews, movieWatchProviders } = props;
+	const { movie, movieCredits, movieExternalIds, movieRecommendations, movieReviews, movieWatchProviders, providers } = props;
 
 	return (
 		<>
@@ -43,7 +43,7 @@ const Movie = (props: MoviePageProps) => {
 			</Head>
 			{movie !== null && <Hero movie={movie} externalIds={movieExternalIds} type="movie" />}
 			{movieCredits !== null && <Cast credits={movieCredits} />}
-			{movieWatchProviders !== null && <WatchProviders providers={movieWatchProviders.results} />}
+			{movieWatchProviders !== null && <WatchProviders movieWatchProviders={movieWatchProviders} providers={providers} />}
 			{movieReviews !== null && <Reviews reviews={movieReviews} />}
 			{movie !== null && <RevenueBudgetView budget={movie.budget} revenue={movie.revenue} />}
 			{movieRecommendations !== null && <MoviesList listTitle="Similar Movies" movies={movieRecommendations.results} type="movie" compact={true} />}
@@ -59,6 +59,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}movie?id=${id}`)
 	).json();
 
+	const { providers } = await (await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}watch_providers`)).json();
+
 	return {
 		props: {
 			movie,
@@ -67,6 +69,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			movieExternalIds,
 			movieReviews,
 			movieWatchProviders,
+			providers,
 		},
 	};
 };

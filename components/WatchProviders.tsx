@@ -1,20 +1,42 @@
-import { MovieWatchProviders } from "../models/movie_watch_providers";
+import type { WatchProvidersProps } from "../models/props";
+import type { MovieWatchProviders } from "../models/movie_watch_providers";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import WatchProviderList from "./WatchProviderList";
 
-const WatchProviders = (props: { providers: MovieWatchProviders.Results }) => {
-	const { providers } = props;
-	// console.log(providers);
+const Collapse = dynamic(() => import("./Collapse"));
+
+const WatchProviders = (props: WatchProvidersProps) => {
+	const { providers, movieWatchProviders } = props;
+	const [selectedCountry, setSelectedCountry] = useState("");
+	const [selectedProvider, setSelectedProvider] = useState({} as MovieWatchProviders.ProviderObject);
+
+	useEffect(() => {
+		setSelectedProvider(movieWatchProviders.results[selectedCountry]);
+	}, [selectedCountry, selectedProvider]);
+
 	return (
-		<div className="w-full my-2 md:my-4 mx-auto lg:max-w-cs px-cs">
-			<div className="collapse rounded-md collapse-arrow" style={{ display: "grid" }}>
-				<input type="checkbox" />
-				<div className="collapse-title bg-secondary-content text-secondary peer-checked:bg-secondary peer-checked:text-secondary-content flex items-center">
-					<h1 className="text-white text-bold text-2xl mr-3">Where to watch</h1>
-				</div>
-				<div className="collapse-content bg-secondary-content text-secondary peer-checked:bg-secondary peer-checked:text-secondary-content">
-					<div className="flex flex-col">providers</div>
-				</div>
+		<Collapse title="Where to watch">
+			<select className="select select-bordered w-full max-w-sm block" defaultValue={"default"} onChange={(e) => setSelectedCountry(e.target.value)}>
+				<option disabled value="default">
+					Select a country
+				</option>
+				{providers.map((provider: MovieWatchProviders.Result) => (
+					<option key={provider.english_name} value={provider.iso_3166_1}>
+						{provider.english_name}
+					</option>
+				))}
+			</select>
+			<div className="mt-3">
+				{selectedProvider !== undefined ? (
+					<>
+						<WatchProviderList provider={selectedProvider.rent} title="Rent" />
+						<WatchProviderList provider={selectedProvider.buy} title="Buy" />
+						<WatchProviderList provider={selectedProvider.flatrate} title="Flat Rate" />
+					</>
+				) : null}
 			</div>
-		</div>
+		</Collapse>
 	);
 };
 
