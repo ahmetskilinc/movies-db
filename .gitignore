@@ -36,8 +36,10 @@ yarn-error.log*
 
 .env
 
+# workbox
 fallback-development.js
 sw.js
 sw.js.map
 workbox-*.js
 workbox-*.js.map
+fallback-*.js

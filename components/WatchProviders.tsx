@@ -2,9 +2,9 @@ import type { WatchProvidersProps } from "../models/props";
 import type { MovieWatchProviders } from "../models/movie_watch_providers";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import WatchProviderList from "./WatchProviderList";
 
 const Collapse = dynamic(() => import("./Collapse"));
+const WatchProviderList = dynamic(() => import("./WatchProviderList"));
 
 const WatchProviders = (props: WatchProvidersProps) => {
 	const { providers, movieWatchProviders } = props;
@@ -30,15 +30,9 @@ const WatchProviders = (props: WatchProvidersProps) => {
 			<div className="mt-3">
 				{selectedProvider !== undefined ? (
 					<>
-						{selectedProvider.buy?.length > 0 && selectedProvider.flatrate?.length > 0 && selectedProvider.rent?.length > 0 ? (
-							<>
-								<WatchProviderList provider={selectedProvider.rent} title="Rent" />
-								<WatchProviderList provider={selectedProvider.buy} title="Buy" />
-								<WatchProviderList provider={selectedProvider.flatrate} title="Flat Rate" />
-							</>
-						) : (
-							<p className="text-center">No providers available region</p>
-						)}
+						<WatchProviderList provider={selectedProvider.rent} title="Rent" />
+						<WatchProviderList provider={selectedProvider.buy} title="Buy" />
+						<WatchProviderList provider={selectedProvider.flatrate} title="Flat Rate" />
 					</>
 				) : (
 					<p className="text-center">Select a country to see the providers</p>
