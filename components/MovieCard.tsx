@@ -1,11 +1,5 @@
 import Link from "next/link";
-import { Movies } from "../models/movie_popular";
-import { TvPopular } from "../models/tv_popular";
-
-interface MovieCardProps {
-	movie: Movies.Result | TvPopular.Result;
-	type: string;
-}
+import type { MovieCardProps } from "../models/props";
 
 const MovieCard = (props: MovieCardProps) => {
 	const { movie, type } = props;

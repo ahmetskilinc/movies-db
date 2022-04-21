@@ -1,10 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import { HomeHeroType } from "../models/home_hero";
-
-interface HomeHeroProps {
-	movies: HomeHeroType.RootObject[];
-}
+import type { HomeHeroProps } from "../models/props";
 
 const HomeHero = (props: HomeHeroProps) => {
 	const { movies } = props;

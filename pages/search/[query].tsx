@@ -1,7 +1,6 @@
 // types
 import type { GetServerSideProps } from "next";
-import type { Movies } from "../../models/movie_popular";
-import type { TvPopular } from "../../models/tv_popular";
+import type { SearchProps } from "../../models/props";
 // components
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -10,12 +9,7 @@ import { useRouter } from "next/router";
 // dynamic components
 const MoviesList = dynamic(() => import("../../components/MoviesList"));
 
-interface HomeProps {
-	moviesSearch: Movies.Result[];
-	tvSearch: TvPopular.Result[];
-}
-
-const Home = (props: HomeProps) => {
+const Home = (props: SearchProps) => {
 	const { moviesSearch, tvSearch } = props;
 	const router = useRouter();
 	const { query } = router.query;

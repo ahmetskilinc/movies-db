@@ -1,10 +1,7 @@
+// types
 import type { GetServerSideProps } from "next";
-import type { Credits } from "../../models/credits";
-import type { Movie } from "../../models/movie";
-import type { Movies } from "../../models/movie_popular";
-import type { ExternalIds } from "../../models/external_ids";
-import type { Reviews } from "../../models/reviews";
-import type { MovieWatchProviders } from "../../models/movie_watch_providers";
+import type { MoviePageProps } from "../../models/props";
+// components
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
@@ -15,15 +12,6 @@ const RevenueBudgetView = dynamic(() => import("../../components/RevBudgetView")
 const Reviews = dynamic(() => import("../../components/Reviews"));
 const MoviesList = dynamic(() => import("../../components/MoviesList"));
 const WatchProviders = dynamic(() => import("../../components/WatchProviders"));
-
-interface MoviePageProps {
-	movie: Movie.RootObject;
-	movieCredits: Credits.RootObject;
-	movieRecommendations: Movies.RootObject;
-	movieExternalIds: ExternalIds.RootObject;
-	movieReviews: Reviews.RootObject;
-	movieWatchProviders: MovieWatchProviders.RootObject;
-}
 
 const Movie = (props: MoviePageProps) => {
 	const { movie, movieCredits, movieExternalIds, movieRecommendations, movieReviews, movieWatchProviders } = props;

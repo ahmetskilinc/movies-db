@@ -1,10 +1,10 @@
 import React from "react";
 import { parseISO, format } from "date-fns";
-import { Reviews } from "../models/reviews";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import type { ReviewsProps } from "../models/props";
 
-const Reviews = (props: { reviews: Reviews.RootObject }) => {
+const Reviews = (props: ReviewsProps) => {
 	const { reviews } = props;
 
 	const { results } = reviews;

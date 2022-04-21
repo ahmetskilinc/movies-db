@@ -1,16 +1,9 @@
 // types
-import type { Movies } from "../../models/movie_popular";
+import type { PopularMoviesProps } from "../../models/props";
 // components
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import MoviesList from "../../components/MoviesList";
-
-interface PopularMoviesProps {
-	popularMovies1: Movies.Result[];
-	popularMovies2: Movies.Result[];
-	popularMovies3: Movies.Result[];
-	popularMovies4: Movies.Result[];
-}
 
 const MoviePopular = (props: PopularMoviesProps) => {
 	const { popularMovies1, popularMovies2, popularMovies3, popularMovies4 } = props;

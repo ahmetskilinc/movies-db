@@ -1,15 +1,7 @@
 import dynamic from "next/dynamic";
-import { Movies } from "../models/movie_popular";
-import { TvPopular } from "../models/tv_popular";
+import type { MovieListProps } from "../models/props";
 
 const MovieCard = dynamic(() => import("./MovieCard"));
-
-interface MovieListProps {
-	movies: Movies.Result[] | TvPopular.Result[];
-	listTitle?: string;
-	type: string;
-	compact: boolean;
-}
 
 const MoviesList = (props: MovieListProps) => {
 	const { movies, listTitle, type, compact } = props;

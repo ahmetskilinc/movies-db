@@ -1,6 +1,7 @@
 import CurrencyFormat from "react-currency-format";
+import type { RevBudgetProps } from "../models/props";
 
-const RevenueBudgetView = (props: { budget: number; revenue: number }) => {
+const RevenueBudgetView = (props: RevBudgetProps) => {
 	const { budget, revenue } = props;
 	return (
 		<div className="w-full my-2 md:my-4 mx-auto lg:max-w-cs px-cs">

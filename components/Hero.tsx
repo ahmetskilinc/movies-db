@@ -1,15 +1,9 @@
 import { parseISO, format } from "date-fns";
+import dynamic from "next/dynamic";
 import { isMobile } from "react-device-detect";
-import { ExternalIds } from "../models/external_ids";
-import { Movie } from "../models/movie";
-import { Tv } from "../models/tv";
-import ExternalLinkHero from "./ExternalLinkHero";
+import type { HeroProps } from "../models/props";
 
-interface HeroProps {
-	movie: Movie.RootObject | Tv.RootObject;
-	externalIds: ExternalIds.RootObject;
-	type: string;
-}
+const ExternalLinkHero = dynamic(() => import("./ExternalLinkHero"));
 
 const Hero = (props: HeroProps) => {
 	const { movie, externalIds, type } = props;
