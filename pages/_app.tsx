@@ -5,14 +5,13 @@ import type { AppProps } from "next/app";
 // components
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Script from "next/script";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const router = useRouter();
-	const [hideFooter, setHideFooter] = useState(false);
 	useEffect(() => {
 		if (process.env.NEXT_PUBLIC_ENV === "production") {
 			const handleRouteChange = (url: string) => {
@@ -31,9 +30,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 		import("tw-elements");
 	}, []);
 
-	useEffect(() => {
-		setHideFooter(window.matchMedia("(display-mode: standalone)").matches);
-	});
 	return (
 		<>
 			{process.env.NEXT_PUBLIC_ENV === "production" ? (
@@ -57,7 +53,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			) : null}
 			<Nav />
 			<Component {...pageProps} />
-			{hideFooter && <Footer />}
+			<Footer />
 		</>
 	);
 }
