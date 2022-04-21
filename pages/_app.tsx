@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			) : null}
 			<Nav />
 			<Component {...pageProps} />
-			<Footer />
+			{window.matchMedia("(display-mode: standalone)").matches ? null : <Footer />}
 		</>
 	);
 }
