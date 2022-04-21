@@ -19,7 +19,7 @@ const WatchProviders = (props: WatchProvidersProps) => {
 		<Collapse title="Where to watch">
 			<select className="select select-bordered w-full max-w-sm block" defaultValue={"default"} onChange={(e) => setSelectedCountry(e.target.value)}>
 				<option disabled value="default">
-					Select a country
+					Select a region
 				</option>
 				{providers.map((provider: MovieWatchProviders.Result) => (
 					<option key={provider.english_name} value={provider.iso_3166_1}>
@@ -28,7 +28,7 @@ const WatchProviders = (props: WatchProvidersProps) => {
 				))}
 			</select>
 			<div className="mt-3">
-				{selectedCountry !== "" ? (
+				{selectedProvider !== undefined ? (
 					<>
 						{selectedProvider.buy?.length > 0 && selectedProvider.flatrate?.length > 0 && selectedProvider.rent?.length > 0 ? (
 							<>
@@ -37,7 +37,7 @@ const WatchProviders = (props: WatchProvidersProps) => {
 								<WatchProviderList provider={selectedProvider.flatrate} title="Flat Rate" />
 							</>
 						) : (
-							<p className="text-center">No providers available</p>
+							<p className="text-center">No providers available region</p>
 						)}
 					</>
 				) : (
