@@ -12,7 +12,7 @@ import * as gtag from "../lib/gtag";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const router = useRouter();
-	const [showFooter, setShowFooter] = useState(true);
+	const [hideFooter, setHideFooter] = useState(false);
 	useEffect(() => {
 		if (process.env.NEXT_PUBLIC_ENV === "production") {
 			const handleRouteChange = (url: string) => {
@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 	}, []);
 
 	useEffect(() => {
-		setShowFooter(window.matchMedia("(display-mode: standalone)").matches);
+		setHideFooter(window.matchMedia("(display-mode: standalone)").matches);
 	});
 	return (
 		<>
@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			) : null}
 			<Nav />
 			<Component {...pageProps} />
-			{showFooter && <Footer />}
+			{hideFooter && <Footer />}
 		</>
 	);
 }
