@@ -1,5 +1,5 @@
 // types
-import type { GetStaticProps } from "next";
+import type { GetServerSideProps, GetStaticProps } from "next";
 import type { HomeProps } from "../models/props";
 import type { Movies } from "../models/movie_popular";
 import type { TvPopular } from "../models/tv_popular";
@@ -39,7 +39,7 @@ const Home = (props: HomeProps) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	let homeHero: HomeHeroType.RootObject[] = [];
 
 	axios.get(`${endpoint}trending/movie/day?${key}`).then((response) => {
