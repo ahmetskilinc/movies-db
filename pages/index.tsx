@@ -41,6 +41,7 @@ export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
 	let homeHero: HomeHeroType.RootObject[] = [];
+
 	axios.get(`${endpoint}trending/movie/day?${key}`).then((response) => {
 		response.data.results.slice(0, 2).map((item: HomeHeroType.RootObject) => {
 			homeHero.push({
