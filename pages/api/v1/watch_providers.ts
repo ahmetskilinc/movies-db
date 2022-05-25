@@ -5,7 +5,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 const HomeApi = async (req: NextApiRequest, res: NextApiResponse) => {
 	const providers = await axios({
 		method: "get",
-		url: `${endpoint}watch/providers/regions?api_key=${key}`,
+		url: `${endpoint}watch/providers/regions?${key}`,
 	}).then((response) => {
 		return response.data.results;
 	});

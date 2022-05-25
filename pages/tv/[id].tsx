@@ -3,6 +3,8 @@ import type { TvPageProps } from "../../models/props";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
+import axios from "axios";
+import { key, endpoint } from "../../lib/api_lib";
 // dynamic components
 const Hero = dynamic(() => import("../../components/Hero"));
 const Cast = dynamic(() => import("../../components/Cast"));
@@ -49,16 +51,48 @@ export default Tv;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { id } = context.query;
-	const { movie, movieCredits, movieRecommendations, movieExternalIds, movieReviews, movieWatchProviders } = await (
-		await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}tv?id=${id}`)
-	).json();
+	const movie = await axios({
+		method: "get",
+		url: `${endpoint}tv/${id}?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
+	const movieCredits = await axios({
+		method: "get",
+		url: `${endpoint}tv/${id}/credits?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
+	const movieRecommendations = await axios({
+		method: "get",
+		url: `${endpoint}tv/${id}/recommendations?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
+	const movieExternalIds = await axios({
+		method: "get",
+		url: `${endpoint}tv/${id}/external_ids?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
+	const movieReviews = await axios({
+		method: "get",
+		url: `${endpoint}tv/${id}/reviews?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
 	return {
 		props: {
-			movie: movie,
-			movieCredits: movieCredits,
-			movieRecommendations: movieRecommendations,
-			movieExternalIds: movieExternalIds,
-			movieReviews: movieReviews,
+			movie,
+			movieCredits,
+			movieRecommendations,
+			movieExternalIds,
+			movieReviews,
 		},
 	};
 };

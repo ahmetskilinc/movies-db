@@ -3,13 +3,12 @@ import { key, endpoint } from "../../../lib/api_lib";
 import type { NextApiRequest, NextApiResponse } from "next";
 import type { Movies } from "../../../models/movie_popular";
 import type { TvPopular } from "../../../models/tv_popular";
-import type { HomeHeroType } from "../../../models/home_hero";
 
 const SearchApi = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { q } = req.query;
 	const moviesSearch = await axios({
 		method: "get",
-		url: `${endpoint}search/movie?api_key=${key}&page=1&query=${encodeURI(q as string)}&include_adult=true`,
+		url: `${endpoint}search/movie?${key}&page=1&query=${encodeURI(q as string)}&include_adult=true`,
 	}).then((response) => {
 		return response.data.results.map((item: Movies.Result) => {
 			return {
@@ -22,7 +21,7 @@ const SearchApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
 	const tvSearch = await axios({
 		method: "get",
-		url: `${endpoint}search/tv?api_key=${key}&page=1&query=${encodeURI(q as string)}&include_adult=true`,
+		url: `${endpoint}search/tv?${key}&page=1&query=${encodeURI(q as string)}&include_adult=true`,
 	}).then((response) => {
 		return response.data.results.map((item: TvPopular.Result) => {
 			return {

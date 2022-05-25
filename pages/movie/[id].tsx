@@ -1,6 +1,9 @@
 // types
 import type { GetServerSideProps } from "next";
 import type { MoviePageProps } from "../../models/props";
+
+import axios from "axios";
+import { key, endpoint } from "../../lib/api_lib";
 // components
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -55,9 +58,47 @@ export default Movie;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { id } = context.query;
-	const { movie, movieCredits, movieRecommendations, movieExternalIds, movieReviews, movieWatchProviders } = await (
-		await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}movie?id=${id}`)
-	).json();
+	const movie = await axios({
+		method: "get",
+		url: `${endpoint}movie/${id}?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
+	const movieCredits = await axios({
+		method: "get",
+		url: `${endpoint}movie/${id}/credits?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
+	const movieRecommendations = await axios({
+		method: "get",
+		url: `${endpoint}movie/${id}/recommendations?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
+	const movieExternalIds = await axios({
+		method: "get",
+		url: `${endpoint}movie/${id}/external_ids?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
+	const movieReviews = await axios({
+		method: "get",
+		url: `${endpoint}movie/${id}/reviews?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
+
+	const movieWatchProviders = await axios({
+		method: "get",
+		url: `${endpoint}movie/${id}/watch/providers?${key}`,
+	}).then((response) => {
+		return response.data;
+	});
 
 	const { providers } = await (await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}watch_providers`)).json();
 

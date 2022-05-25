@@ -1,5 +1,8 @@
 // types
 import type { PopularMoviesProps } from "../../models/props";
+
+import axios from "axios";
+import { key, endpoint } from "../../lib/api_lib";
 // components
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -31,9 +34,33 @@ const MoviePopular = (props: PopularMoviesProps) => {
 export default MoviePopular;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	const { popularMovies1, popularMovies2, popularMovies3, popularMovies4 } = await (
-		await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}popular_movies`)
-	).json();
+	const popularMovies1 = await axios({
+		method: "get",
+		url: `${endpoint}movie/popular?${key}&language=en-US&page=1`,
+	}).then((response) => {
+		return response.data.results;
+	});
+
+	const popularMovies2 = await axios({
+		method: "get",
+		url: `${endpoint}movie/popular?${key}&language=en-US&page=2`,
+	}).then((response) => {
+		return response.data.results;
+	});
+
+	const popularMovies3 = await axios({
+		method: "get",
+		url: `${endpoint}movie/popular?${key}&language=en-US&page=3`,
+	}).then((response) => {
+		return response.data.results;
+	});
+
+	const popularMovies4 = await axios({
+		method: "get",
+		url: `${endpoint}movie/popular?${key}&language=en-US&page=4`,
+	}).then((response) => {
+		return response.data.results;
+	});
 
 	return {
 		props: {
