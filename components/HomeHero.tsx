@@ -1,5 +1,7 @@
-import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { isMobile } from "react-device-detect";
 import type { HomeHeroProps } from "../models/props";
 
 const HomeHero = (props: HomeHeroProps) => {
@@ -31,10 +33,12 @@ const HomeHero = (props: HomeHeroProps) => {
 						style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w780${movie.backdrop_path})` }}
 					>
 						<div className="flex flex-col lg:flex-row justify-center items-center mx-auto lg:max-w-cs relative z-10 px-6 lg:px-cs ">
-							<img
+							<Image
 								loading="lazy"
 								src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
 								alt={movie.type === "movie" ? movie.title : movie.name}
+								width={isMobile ? 176 : 288}
+								height={isMobile ? 156 : 384}
 								className="w-44 lg:w-72 h-64 lg:h-96 object-cover rounded-xl shadow-2xl lg:mr-6 mb-2 lg:mb-0"
 							/>
 							<div>

@@ -13,7 +13,7 @@ const WatchProviders = (props: WatchProvidersProps) => {
 
 	useEffect(() => {
 		setSelectedProvider(movieWatchProviders.results[selectedCountry]);
-	}, [selectedCountry, selectedProvider]);
+	}, [selectedCountry, movieWatchProviders.results]);
 
 	return (
 		<Collapse title="Where to watch">

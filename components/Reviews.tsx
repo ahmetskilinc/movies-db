@@ -4,6 +4,7 @@ import { parseISO, format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const Collapse = dynamic(() => import("./Collapse"));
 const ReviewsHeader = dynamic(() => import("./ReviewsHeader"));
@@ -29,7 +30,7 @@ const Reviews = (props: ReviewsProps) => {
 						<div className="flex items-center mb-2">
 							<div className="avatar border-0 h-10 mr-3">
 								<div className="flex-shrink-0 w-10 h-10">
-									<img
+									<Image
 										className="rounded h-14 w-14 object-cover"
 										src={
 											review.author_details.avatar_path !== null && review.author_details.avatar_path.split("/").length === 2
@@ -38,6 +39,9 @@ const Reviews = (props: ReviewsProps) => {
 												? review.author_details.avatar_path.substring(1)
 												: "/images/placeholder.jpeg"
 										}
+										alt={review.author}
+										width={56}
+										height={56}
 									/>
 								</div>
 							</div>
