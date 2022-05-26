@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { MovieWatchProviderListProps } from "../models/props";
 
 const WatchProviderList = (props: MovieWatchProviderListProps) => {
@@ -8,7 +9,13 @@ const WatchProviderList = (props: MovieWatchProviderListProps) => {
 			<div className="flex flex-column flex-wrap space-x-3">
 				{provider?.map((provider) => (
 					<div key={provider.provider_id}>
-						<img src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`} className="rounded-2xl h-14 w-14" alt={provider.provider_name} />
+						<Image
+							src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`}
+							className="rounded-2xl h-14 w-14"
+							alt={provider.provider_name}
+							width={56}
+							height={56}
+						/>
 					</div>
 				))}
 			</div>
