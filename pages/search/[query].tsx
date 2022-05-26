@@ -1,10 +1,15 @@
 // types
 import type { GetServerSideProps } from "next";
 import type { SearchProps } from "../../models/props";
+
+import { key, endpoint } from "../../lib/api_lib";
+import type { Movies } from "../../models/movie_popular";
+import type { TvPopular } from "../../models/tv_popular";
 // components
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 // dynamic components
 const MoviesList = dynamic(() => import("../../components/MoviesList"));
@@ -53,7 +58,31 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { query } = context.query;
-	const { moviesSearch, tvSearch } = await (await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}search?q=${query}`)).json();
+	const moviesSearch = await axios({
+		method: "get",
+		url: `${endpoint}search/movie?${key}&page=1&query=${encodeURI(query as string)}&include_adult=true`,
+	}).then((response) => {
+		return response.data.results.map((item: Movies.Result) => {
+			return {
+				id: item.id,
+				title: item.title,
+				poster_path: item.poster_path,
+			};
+		});
+	});
+
+	const tvSearch = await axios({
+		method: "get",
+		url: `${endpoint}search/tv?${key}&page=1&query=${encodeURI(query as string)}&include_adult=true`,
+	}).then((response) => {
+		return response.data.results.map((item: TvPopular.Result) => {
+			return {
+				id: item.id,
+				name: item.name,
+				poster_path: item.poster_path,
+			};
+		});
+	});
 	return {
 		props: {
 			moviesSearch,

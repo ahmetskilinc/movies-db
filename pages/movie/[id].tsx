@@ -100,7 +100,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		return response.data;
 	});
 
-	const { providers } = await (await fetch(`${process.env.NEXT_PUBLIC_DEFAULT_API}watch_providers`)).json();
+	const providers = await axios({
+		method: "get",
+		url: `${endpoint}watch/providers/regions?${key}`,
+	}).then((response) => {
+		return response.data.results;
+	});
 
 	return {
 		props: {
