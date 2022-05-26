@@ -8,7 +8,7 @@ const ReviewsHeader = (props: ReviewsHeaderProps) => {
 			{results.slice(0, 3).map((review) => (
 				<div className="avatar" key={review.id}>
 					<div className="w-6 h-6">
-						<Image
+						<img
 							src={
 								review.author_details.avatar_path !== null && review.author_details.avatar_path.split("/").length === 2
 									? `https://image.tmdb.org/t/p/w150_and_h150_face/${review.author_details.avatar_path}`
@@ -17,8 +17,6 @@ const ReviewsHeader = (props: ReviewsHeaderProps) => {
 									: "/images/placeholder.jpeg"
 							}
 							alt={review.author}
-							width={24}
-							height={24}
 						/>
 					</div>
 				</div>

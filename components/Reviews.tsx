@@ -30,7 +30,7 @@ const Reviews = (props: ReviewsProps) => {
 						<div className="flex items-center mb-2">
 							<div className="avatar border-0 h-10 mr-3">
 								<div className="flex-shrink-0 w-10 h-10">
-									<Image
+									<img
 										className="rounded h-14 w-14 object-cover"
 										src={
 											review.author_details.avatar_path !== null && review.author_details.avatar_path.split("/").length === 2
@@ -40,8 +40,6 @@ const Reviews = (props: ReviewsProps) => {
 												: "/images/placeholder.jpeg"
 										}
 										alt={review.author}
-										width={56}
-										height={56}
 									/>
 								</div>
 							</div>
