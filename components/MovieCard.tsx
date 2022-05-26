@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { isMobile } from "react-device-detect";
 import type { MovieCardProps } from "../models/props";

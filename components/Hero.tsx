@@ -1,6 +1,5 @@
 import { parseISO, format } from "date-fns";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { isMobile } from "react-device-detect";
 import type { HeroProps } from "../models/props";
 

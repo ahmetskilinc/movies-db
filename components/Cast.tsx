@@ -1,7 +1,6 @@
 import { isMobile } from "react-device-detect";
 import Link from "next/link";
 import type { CastProps } from "../models/props";
-import Image from "next/image";
 
 const Cast = (props: CastProps) => {
 	const { credits } = props;

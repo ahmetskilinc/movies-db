@@ -4,7 +4,6 @@ import { parseISO, format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 
 const Collapse = dynamic(() => import("./Collapse"));
 const ReviewsHeader = dynamic(() => import("./ReviewsHeader"));

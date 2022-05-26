@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ReviewsHeaderProps } from "../models/props";
 
 const ReviewsHeader = (props: ReviewsHeaderProps) => {

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { MovieWatchProviderListProps } from "../models/props";
 
 const WatchProviderList = (props: MovieWatchProviderListProps) => {
