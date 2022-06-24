@@ -33,7 +33,6 @@ export default function Document() {
 				<meta name="twitter:title" content="MovieDB" />
 				<meta name="twitter:description" content="Find all your favourite Movies and TV Shows." />
 				<meta name="twitter:image" content="https://movies.ahmetk.dev/icons/android-chrome-192x192.png" />
-				<meta name="twitter:creator" content="@DavidWShadow" />
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content="MovieDB" />
 				<meta property="og:description" content="Find all your favourite Movies and TV Shows." />
